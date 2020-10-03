@@ -26,7 +26,7 @@
                 <div class="container">
                     <div class="row align-items-center">
                         <div class="col-lg-3 ">
-                            <a href="index.html" class="site-brand">
+                            <a href="/Project4/home" class="site-brand">
                                 <img src="layout/image/logo.png" alt="">
                             </a>
                         </div>
@@ -45,13 +45,13 @@
                             <div class="main-navigation flex-lg-right">
                                 <ul class="main-menu menu-right ">
                                     <li class="menu-item has-children">
-                                        <a href="index.html">Home </a>
+                                        <a href="/Project4/home">Home </a>
                                     </li>
                                     <li class="menu-item has-children mega-menu">
-                                        <a href="shop.html">shop</a>                                      
+                                        <a href="/Project4/shop">shop</a>                                      
                                     </li>                               
                                     <li class="menu-item">
-                                        <a href="contact.html">Contact</a>
+                                        <a href="/Project4/contact">Contact</a>
                                     </li>
                                 </ul>
                             </div>
@@ -72,7 +72,7 @@
                             <div class="main-navigation flex-lg-right">
                                 <div class="cart-widget">
                                     <div class="login-block">
-                                        <a href="login-register.html" class="font-weight-bold">Login</a>
+                                        <a href="/Project4/login" class="font-weight-bold">Login</a>
                                     </div>
                                     <div class="cart-block">
                                         <div class="cart-total">
@@ -90,11 +90,11 @@
                                         <div class="cart-dropdown-block">
                                             <div class=" single-cart-block ">
                                                 <div class="cart-product">
-                                                    <a href="details.html" class="image">
+                                                    <a href="/Project4/productdetail" class="image">
                                                         <img src="layout/image/products/cart-product-1.jpg" alt="">
                                                     </a>
                                                     <div class="content">
-                                                        <h3 class="title"><a href="details.html">Kodak PIXPRO
+                                                        <h3 class="title"><a href="/Project4/productdetail">Kodak PIXPRO
                                                                 Astro Zoom AZ421 16 MP</a>
                                                         </h3>
                                                         <p class="price"><span class="qty">1 ×</span> £87.34</p>
@@ -104,9 +104,9 @@
                                             </div>
                                             <div class=" single-cart-block ">
                                                 <div class="btn-block">
-                                                    <a href="cart.html" class="btn">View Cart <i
+                                                    <a href="/Project4/cart" class="btn">View Cart <i
                                                             class="fas fa-chevron-right"></i></a>
-                                                    <a href="checkout.html" class="btn btn--primary">Check Out <i
+                                                    <a href="/Project4/checkout" class="btn btn--primary">Check Out <i
                                                             class="fas fa-chevron-right"></i></a>
                                                 </div>
                                             </div>
@@ -124,7 +124,7 @@
                 <div class="container">
                     <div class="row align-items-sm-end align-items-center">
                         <div class="col-md-4 col-7">
-                            <a href="index.html" class="site-brand">
+                            <a href="/Project4/home" class="site-brand">
                                 <img src="layout/image/logo.png" alt="">
                             </a>
                         </div>
@@ -132,7 +132,7 @@
                             <div class="mobile-header-btns header-top-widget">
                                 <ul class="header-links">
                                     <li class="sin-link">
-                                        <a href="cart.html" class="cart-link link-icon"><i class="ion-bag"></i></a>
+                                        <a href="/Project4/cart" class="cart-link link-icon"><i class="ion-bag"></i></a>
                                     </li>
                                     <li class="sin-link">
                                         <a href="javascript:" class="link-icon hamburgur-icon off-canvas-btn"><i
@@ -164,33 +164,25 @@
                         <nav class="off-canvas-nav">
                             <ul class="mobile-menu main-mobile-menu">
                                 <li class="menu-item-has-children">
-                                    <a href="#">Home</a>                                 
+                                    <a href="/Project4/home">Home</a>                                 
                                 </li>
                                 <li class="menu-item-has-children   ">
-                                    <a href="#">Shop</a>                               
+                                    <a href="/Project4/shop">Shop</a>                               
                                 </li>
-                                <li><a href="contact.html">Contact</a></li>
+                                <li><a href="/Project4/contact">Contact</a></li>
                             </ul>
                         </nav>
                         <!-- mobile menu navigation end -->
                     </div>
                     <!-- mobile menu end -->
                     <nav class="off-canvas-nav">
-                        <ul class="mobile-menu menu-block-2">
-                            <li class="menu-item-has-children">
-                                <a href="#">Currency - USD $ <i class="fas fa-angle-down"></i></a>
-                                <ul class="sub-menu">
-                                    <li> <a href="cart.html">USD $</a></li>
-                                    <li> <a href="checkout.html">EUR €</a></li>
-                                </ul>
-                            </li>                          
+                        <ul class="mobile-menu menu-block-2">                         
                             <li class="menu-item-has-children">
                                 <a href="#">My Account <i class="fas fa-angle-down"></i></a>
                                 <ul class="sub-menu">
                                     <li><a href="#">My Account</a></li>
                                     <li><a href="#">Order History</a></li>
                                     <li><a href="#">Transactions</a></li>
-                                    <li><a href="#">Downloads</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -218,7 +210,7 @@
             <div class="container d-none d-lg-block">
                 <div class="row align-items-center">
                     <div class="col-lg-4">
-                        <a href="index.html" class="site-brand">
+                        <a href="/Project4/home" class="site-brand">
                             <img src="layout/image/logo.png" alt="">
                         </a>
                     </div>
@@ -226,13 +218,13 @@
                         <div class="main-navigation flex-lg-right">
                             <ul class="main-menu menu-right ">
                                 <li class="menu-item has-children">
-                                    <a href="index.html">Home </a>
+                                    <a href="/Project4/home">Home </a>
                                 </li>
                                 <li class="menu-item has-children mega-menu">
-                                    <a href="shop.html">shop</a>                                      
+                                    <a href="/Project4/shop">shop</a>                                      
                                 </li>                               
                                 <li class="menu-item">
-                                    <a href="contact.html">Contact</a>
+                                    <a href="/Project4/contact">Contact</a>
                                 </li>
                             </ul>
                         </div>

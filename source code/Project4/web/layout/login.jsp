@@ -20,9 +20,9 @@
 			<div class="container">
 				<div class="row">
                                     <div class="col-sm-12 col-md-12 col-lg-3 col-xs-12"></div>
-					<div class="col-sm-12 col-md-12 col-lg-6 col-xs-12" style="border:solid #62ab00 1px">
-						<form action="">
-							<div class="login-form">
+					<div class="col-sm-12 col-md-12 col-lg-6 col-xs-12" >
+                                            <form action="/Project4/login" method="post">
+							<div class="login-form" style="border:solid #62ab00 1px">
 								<h4 class="login-title">Returning Customer</h4>
 								<p><span class="font-weight-bold">I am a returning customer</span></p>
 								<div class="row">
@@ -36,7 +36,8 @@
 										<input class="mb-0 form-control" type="password" id="login-password" placeholder="Enter your password" name="password">
 									</div>
 									<div class="col-md-12">
-										<a href="#" class="btn btn-outlined">Login</a>
+                                                                            <Button type="submit" class="btn btn-outlined">Login</button>
+                                                                                <a href="/Project4/register" style="margin-left: 10px; color: #62ab00;">Do you have a account? Click here</a>
 									</div>
 								</div>
 							</div>

@@ -20,10 +20,10 @@
 			<div class="container">
 				<div class="row">
                                         <div class="col-sm-12 col-md-12 col-lg-3 col-xs-12"></div>
-                                        <div class="col-sm-12 col-md-12 col-xs-12 col-lg-6 mb--30 mb-lg--0" style="border:solid #62ab00 1px">
+                                        <div class="col-sm-12 col-md-12 col-xs-12 col-lg-6 mb--30 mb-lg--0" >
 						<!-- Login Form s-->
-						<form action="#">
-							<div class="login-form">
+                                                <form action="/Project4/register" method="post">
+							<div class="login-form" style="border:solid #62ab00 1px">
 								<h4 class="login-title">New Customer</h4>
 								<p><span class="font-weight-bold">I am a new customer</span></p>
 								<div class="row">
@@ -53,7 +53,8 @@
 										<input class="mb-0 form-control" type="number" id="phone" placeholder="Enter your phone" name="phone">
 									</div>
 									<div class="col-md-12">
-										<a href="#" class="btn btn-outlined">Register</a>
+                                                                            <Button type="submit" class="btn btn-outlined">Register</button>
+                                                                                <a href="/Project4/login" class="btn btn-outlined">Login</a>
 									</div>
 								</div>
 							</div>

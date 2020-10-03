@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author black
  */
-public class Index extends HttpServlet {
+public class IndexServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
