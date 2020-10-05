@@ -22,6 +22,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
@@ -31,6 +32,7 @@ import javax.validation.constraints.Size;
 @Table(name = "users")
 @NamedQueries({
     @NamedQuery(name = "Users.findAll", query = "SELECT u FROM Users u")})
+@XmlRootElement
 public class Users implements Serializable {
 
     private static final long serialVersionUID = 1L;

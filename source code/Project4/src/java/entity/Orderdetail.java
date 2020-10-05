@@ -14,6 +14,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
@@ -23,6 +24,7 @@ import javax.persistence.Table;
 @Table(name = "orderdetail")
 @NamedQueries({
     @NamedQuery(name = "Orderdetail.findAll", query = "SELECT o FROM Orderdetail o")})
+@XmlRootElement
 public class Orderdetail implements Serializable {
 
     private static final long serialVersionUID = 1L;

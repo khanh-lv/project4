@@ -20,33 +20,33 @@
                     <div class="col-lg-6">
                         <div class="contact_form">
                             <h3 class="ct_title">Send Us a Message</h3>
-                            <form id="contact-form" action="" method="post" class="contact-form">
+                            <form id="contact-form" method="post" class="contact-form">
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="form-group">
                                             <label>Your Name <span class="required">*</span></label>
-                                            <input type="text" id="con_name" name="con_name" class="form-control"
-                                                required>
+                                            <input type="text" id="con_name" required ="true" name="name" class="form-control"
+                                                required/>
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="form-group">
                                             <label>Your Email <span class="required">*</span></label>
-                                            <input type="email" id="con_email" name="con_email" class="form-control"
-                                                required>
+                                            <input type="email" id="con_email"  name="email" class="form-control"
+                                                required/>
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="form-group">
                                             <label>Your Message</label>
-                                            <textarea id="con_message" name="con_message"
+                                            <textarea id="con_message"  name="content"
                                                 class="form-control"></textarea>
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="form-btn">
-                                            <button type="submit" value="submit" id="submit" class="btn btn-black w-100"
-                                                name="submit">send</button>
+                                            <button type="submit"  id="submit" class="btn btn-black w-100">
+                                                send</button>
                                         </div>
                                         <div class="form__output"></div>
                                     </div>

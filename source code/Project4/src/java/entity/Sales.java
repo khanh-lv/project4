@@ -19,6 +19,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
@@ -28,6 +29,7 @@ import javax.validation.constraints.Size;
 @Table(name = "sales")
 @NamedQueries({
     @NamedQuery(name = "Sales.findAll", query = "SELECT s FROM Sales s")})
+@XmlRootElement
 public class Sales implements Serializable {
 
     private static final long serialVersionUID = 1L;

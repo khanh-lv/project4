@@ -26,6 +26,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Size;
 
+
 /**
  *
  * @author black
@@ -34,6 +35,7 @@ import javax.validation.constraints.Size;
 @Table(name = "books")
 @NamedQueries({
     @NamedQuery(name = "Books.findAll", query = "SELECT b FROM Books b")})
+
 public class Books implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -199,6 +201,7 @@ public class Books implements Serializable {
     public void setCatId(Categories catId) {
         this.catId = catId;
     }
+
 
     public Collection<Orderdetail> getOrderdetailCollection() {
         return orderdetailCollection;
