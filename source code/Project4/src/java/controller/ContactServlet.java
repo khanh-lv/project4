@@ -8,6 +8,7 @@ package controller;
 import entity.Feedback;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Date;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -63,6 +64,7 @@ public class ContactServlet extends HttpServlet {
         String name = request.getParameter("name");
         String email = request.getParameter("email");
         String content = request.getParameter("content");
+        Date date = new Date();
 
         //save into sdb
         EntityManagerFactory factory = Persistence.createEntityManagerFactory("Project4PU");
@@ -72,6 +74,7 @@ public class ContactServlet extends HttpServlet {
         fb.setFullname(name);
         fb.setEmail(email);
         fb.setContent(content);
+        fb.setCreatedAt(date);
 
         em.getTransaction().begin();
         em.persist(fb);

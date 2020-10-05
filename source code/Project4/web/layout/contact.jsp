@@ -20,7 +20,7 @@
                     <div class="col-lg-6">
                         <div class="contact_form">
                             <h3 class="ct_title">Send Us a Message</h3>
-                            <form id="contact-form" method="post" class="contact-form">
+                            <form id="contact-form" action="/Project4/contact" method="post" class="contact-form">
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="form-group">
