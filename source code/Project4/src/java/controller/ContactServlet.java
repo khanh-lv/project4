@@ -32,8 +32,6 @@ public class ContactServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-   
-
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -46,9 +44,7 @@ public class ContactServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-       
-              
+
         RequestDispatcher rd = request.getRequestDispatcher("layout/contact.jsp");
         rd.forward(request, response);
     }
@@ -67,22 +63,21 @@ public class ContactServlet extends HttpServlet {
         String name = request.getParameter("name");
         String email = request.getParameter("email");
         String content = request.getParameter("content");
-        
+
         //save into sdb
-         EntityManagerFactory factory = Persistence.createEntityManagerFactory("Project4PU");
-            EntityManager em = factory.createEntityManager();
-            
+        EntityManagerFactory factory = Persistence.createEntityManagerFactory("Project4PU");
+        EntityManager em = factory.createEntityManager();
+
         Feedback fb = new Feedback();
         fb.setFullname(name);
         fb.setEmail(email);
         fb.setContent(content);
-        
+
         em.getTransaction().begin();
         em.persist(fb);
+        
         em.getTransaction().commit();
-              
-        RequestDispatcher rd = request.getRequestDispatcher("layout/contact.jsp");
-        rd.forward(request, response);
+                
     }
 
     /**
