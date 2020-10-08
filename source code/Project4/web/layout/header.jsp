@@ -53,6 +53,9 @@
                                     <li class="menu-item">
                                         <a href="/Project4/contact">Contact</a>
                                     </li>
+                                    <li class="menu-item has-children">
+                                        <a href="/Project4/myaccount">My Account </a>
+                                    </li>
                                 </ul>
                             </div>
                         </div>

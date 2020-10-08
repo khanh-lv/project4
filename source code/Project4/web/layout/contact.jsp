@@ -1,3 +1,20 @@
+<script>
+  function validateForm() {
+    var content = document.getElementById('con_cotent').value;
+    var cname = document.getElementById('con_name').value;
+    if (/^\s*$/g.test(cname)) {
+        alert('Wrong content!');
+    }
+    
+    if (/^\s*$/g.test(content)) {
+        alert('Wrong content!');
+    }
+    
+    
+    
+}
+ 
+</script>
 <jsp:include page="header.jsp" />
 
         <section class="breadcrumb-section">
@@ -20,26 +37,26 @@
                     <div class="col-lg-6">
                         <div class="contact_form">
                             <h3 class="ct_title">Send Us a Message</h3>
-                            <form id="contact-form" action="/Project4/contact" method="post" class="contact-form">
+                            <form id="contact-form"  onsubmit="return validateForm()" action="/Project4/contact" method="post" class="contact-form">
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="form-group">
                                             <label>Your Name <span class="required">*</span></label>
-                                            <input type="text" id="con_name" required ="true" name="name" class="form-control"
-                                                required/>
+                                            <input type="text" id="con_name"  name="name" class="form-control"
+                                                />
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="form-group">
                                             <label>Your Email <span class="required">*</span></label>
                                             <input type="email" id="con_email"  name="email" class="form-control"
-                                                required/>
+                                                />
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="form-group">
                                             <label>Your Message</label>
-                                            <textarea id="con_message"  name="content"
+                                            <textarea id="con_cotent"  name="content"
                                                 class="form-control"></textarea>
                                         </div>
                                     </div>
