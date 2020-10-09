@@ -5,8 +5,14 @@
  */
 package controller;
 
+import entity.Users;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.persistence.Query;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -28,23 +34,6 @@ public class LoginServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet LoginServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet LoginServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
-    }
-
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -72,7 +61,34 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+//        String email = request.getParameter("email");
+//        String password = request.getParameter("password");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("Project4PU");
+        EntityManager em = emf.createEntityManager();
+//        if(email != "" && password != "") {
+
+//            List<Users> userList = query.getResultList();
+//            
+//            RequestDispatcher rd = request.getRequestDispatcher("layout/index.jsp");
+//            rd.forward(request, response);
+//        }
+        String email = request.getParameter("email");
+        String password = request.getParameter("password");
+
+
+        Query q = em.createQuery("select u from Users u where u.email = '" + email + "' and u.password = '" + password + "'");
+        List<Users> userList = q.getResultList();
+        
+        if (userList.size() > 0) {
+            RequestDispatcher rd = request.getRequestDispatcher("/layout/index.jsp");
+            rd.include(request, response);
+        } else {
+            // tao alert thong bao cho nguoi dung biet la email hay password bi sai. yu cau ho nhap lai
+            PrintWriter out = response.getWriter();
+            out.println("<script>alert('Email or password is incorrect!');</script>");
+            RequestDispatcher rd = getServletContext().getRequestDispatcher("/layout/login.jsp");
+            rd.include(request, response);
+        }
     }
 
     /**

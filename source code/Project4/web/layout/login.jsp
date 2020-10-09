@@ -21,19 +21,21 @@
 				<div class="row">
                                     <div class="col-sm-12 col-md-12 col-lg-3 col-xs-12"></div>
 					<div class="col-sm-12 col-md-12 col-lg-6 col-xs-12" >
-                                            <form action="/Project4/login" method="post">
+                                            <form action="/Project4/login" method="post" onsubmit="return validate()">
 							<div class="login-form" style="border:solid #62ab00 1px">
 								<h4 class="login-title">Returning Customer</h4>
 								<p><span class="font-weight-bold">I am a returning customer</span></p>
 								<div class="row">
 									<div class="col-md-12 col-12 mb--15">
 										<label for="email">Enter your email address here...</label>
-										<input class="mb-0 form-control" type="email" id="email1"
+										<input class="mb-0 form-control" type="email" id="emai1"
 											placeholder="Enter you email address here..." name="email">
+                                                                                <div style="color: red; display: none; padding-left: 20px;" id="alertemail">This field is required</div>
 									</div>
 									<div class="col-12 mb--20">
 										<label for="password">Password</label>
 										<input class="mb-0 form-control" type="password" id="login-password" placeholder="Enter your password" name="password">
+                                                                                <div style="color: red; display: none; padding-left: 20px;" id="alertpassword">This field is required</div>
 									</div>
 									<div class="col-md-12">
                                                                             <Button type="submit" class="btn btn-outlined">Login</button>
@@ -47,7 +49,32 @@
 			</div>
 		</main>
 	</div>
-
+<script>
+    function validate(){
+       
+        var email = document.getElementById("email");
+        var password = document.getElementById("login-password");
+        
+        if (email.value == ""){
+        var element = document.getElementById("alertemail");
+        element.style.display = "";
+        email.style.border = "solid red 1px";
+        
+        return false;
+        }
+        
+        if (password.value == ""){
+        var element = document.getElementById("alertpassword");
+        element.style.display = "";
+        password.style.border = "solid red 1px";
+        
+        return false;
+        }
+        
+        return true;
+    }
+    
+</script>
 
 
     <jsp:include page="footer.jsp" />

@@ -5,8 +5,16 @@
  */
 package controller;
 
+import entity.Roles;
+import entity.Users;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Date;
+import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.persistence.Query;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -28,22 +36,7 @@ public class RegisterServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet RegisterServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet RegisterServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
-    }
+   
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -72,8 +65,54 @@ public class RegisterServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        RequestDispatcher rd = request.getRequestDispatcher("layout/index.jsp");
-        rd.forward(request, response);
+        
+        String fullname = request.getParameter("fullname");
+        String email = request.getParameter("email");
+        String password = request.getParameter("password");
+        String repassword = request.getParameter("repassword");
+             
+        String address = request.getParameter("address");
+        String phone = request.getParameter("phone");
+//        if(validate(fullname, email, password, repassword, address, phone)) {
+            EntityManagerFactory emf = Persistence.createEntityManagerFactory("Project4PU");
+            EntityManager em = emf.createEntityManager();
+            if(!checkk(email)) {
+                Users users = new Users();
+                users.setFullname(fullname);
+                users.setEmail(email);
+                if(password.equals(repassword)){
+                    users.setPassword(password);
+                } 
+//                else {
+//                    PrintWriter out = response.getWriter();
+//                    out.print("<script>alert('Repassword and Password is incorrect!');</script>");
+//                    RequestDispatcher rd = request.getRequestDispatcher("layout/register.jsp");
+//                    rd.forward(request, response);
+//                }  
+                users.setAddress(address);
+                users.setPhone(phone);
+                users.setStatus(1);
+                Query query = em.createQuery("select r from Roles r where r.role = 'customer'");
+                List<Roles> roleList = query.getResultList();
+                Roles role = roleList.get(0);
+                users.setRoleId(role);
+                java.util.Date date = new java.util.Date();  
+                users.setCreatedAt(date);
+                users.setUpdatedAt(date);
+                em.getTransaction().begin();
+                em.persist(users);
+                em.getTransaction().commit();
+
+                RequestDispatcher rd = request.getRequestDispatcher("layout/index.jsp");
+                rd.forward(request, response);
+            } else {
+                
+                PrintWriter out = response.getWriter();
+                out.print("<script>alert('Register fail, please check again!');</script>");
+                RequestDispatcher rd = request.getRequestDispatcher("layout/register.jsp");
+                rd.forward(request, response);
+            }    
+//        }
     }
 
     /**
@@ -85,5 +124,20 @@ public class RegisterServlet extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
+    public boolean validate(String fullname, String email, String password, String address, String phone, String repassword) {  
+        
+        
+        return true;
+    }
+    public boolean checkk(String email) {
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("Project4PU");
+        EntityManager em = emf.createEntityManager();
+        Query query = em.createQuery("select u from Users u where u.email = '" + email+"'");
+        List<Users> userList = query.getResultList();
+        
+        if(userList.size() == 0) {
+            return false;
+        }
+        return true;
+    }
 }
