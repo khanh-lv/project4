@@ -32,6 +32,22 @@
         <servlet-name>ProductDetailServlet</servlet-name>
         <servlet-class>controller.ProductDetailServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>MyAccount</servlet-name>
+        <servlet-class>controller.MyAccountServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>OrderCompleteServlet</servlet-name>
+        <servlet-class>controller.OrderCompleteServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>LoginAdminServlet</servlet-name>
+        <servlet-class>controller.LoginAdminServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DashboardServlet</servlet-name>
+        <servlet-class>controller.DashboardServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Index</servlet-name>
         <url-pattern>/home</url-pattern>
@@ -66,6 +82,22 @@
     <servlet-mapping>
         <servlet-name>ProductDetailServlet</servlet-name>
         <url-pattern>/productdetail</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MyAccount</servlet-name>
+        <url-pattern>/myaccount</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>OrderCompleteServlet</servlet-name>
+        <url-pattern>/ordercomplete</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoginAdminServlet</servlet-name>
+        <url-pattern>/loginadmin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DashboardServlet</servlet-name>
+        <url-pattern>/admin</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
