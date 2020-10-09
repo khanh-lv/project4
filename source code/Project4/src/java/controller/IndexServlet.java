@@ -5,8 +5,14 @@
  */
 package controller;
 
+import entity.Books;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.persistence.Query;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -57,6 +63,14 @@ public class IndexServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        EntityManagerFactory factory = Persistence.createEntityManagerFactory("Project4PU");
+        EntityManager entity = factory.createEntityManager();
+        Query query = entity.createQuery("select b from Books b");
+        Query query2 = entity.createQuery("select b from Books b");
+        List<Books> bookList = (List<Books>)query.setFirstResult(0).setMaxResults(12).getResultList();
+        List<Books> bestSeller = (List<Books>) query2.setFirstResult(0).setMaxResults(8).getResultList();
+        request.setAttribute("bookList", bookList);
+        request.setAttribute("bestSeller", bestSeller);
         RequestDispatcher rd = request.getRequestDispatcher("layout/index.jsp");
         rd.forward(request, response);
     }
