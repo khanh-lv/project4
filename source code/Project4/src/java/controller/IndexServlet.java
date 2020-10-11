@@ -67,8 +67,10 @@ public class IndexServlet extends HttpServlet {
         EntityManager entity = factory.createEntityManager();
         Query query = entity.createQuery("select b from Books b");
         Query query2 = entity.createQuery("select b from Books b");
-        List<Books> bookList = (List<Books>)query.setFirstResult(0).setMaxResults(12).getResultList();
-        List<Books> bestSeller = (List<Books>) query2.setFirstResult(0).setMaxResults(8).getResultList();
+        List<Object> bookList = query.setFirstResult(0).setMaxResults(12).getResultList();
+        List<Object> bestSeller = query2.setFirstResult(0).setMaxResults(8).getResultList();
+        entity.close();
+        factory.close();
         request.setAttribute("bookList", bookList);
         request.setAttribute("bestSeller", bestSeller);
         RequestDispatcher rd = request.getRequestDispatcher("layout/index.jsp");

@@ -67,8 +67,11 @@
                     <div class="row align-items-center">                       
                         <div class="col-lg-8">
                             <div class="header-search-block">
-                                <input type="text" placeholder="tìm kiếm ở đây">
-                                <button>Search</button>
+                                <form action="shop" method="get">
+                                    <input type="text" name="search" placeholder="tìm kiếm ở đây">
+                                    <button type="submit">Search</button>
+                                </form>
+                                
                             </div>
                         </div>
                         <div class="col-lg-4">
@@ -155,9 +158,9 @@
                 <div class="off-canvas-inner">
                     <!-- search box start -->
                     <div class="search-box offcanvas">
-                        <form>
-                            <input type="text" placeholder="Search Here">
-                            <button class="search-btn"><i class="ion-ios-search-strong"></i></button>
+                        <form action="shop" method="get">
+                            <input type="text" placeholder="Search Here" name="search">
+                            <button class="search-btn" type="submit"><i class="ion-ios-search-strong"></i></button>
                         </form>
                     </div>
                     <!-- search box end -->
