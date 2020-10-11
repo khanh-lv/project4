@@ -62,6 +62,7 @@
                         </div>
                     </div>
                 </div>
+<<<<<<< HEAD
                 <div class="header-bottom pb--10">
                     <div class="container">
                         <div class="row align-items-center">                       
@@ -70,6 +71,19 @@
                                     <input type="text" placeholder="Search">
                                     <button>Search</button>
                                 </div>
+=======
+            </div>
+            <div class="header-bottom pb--10">
+                <div class="container">
+                    <div class="row align-items-center">                       
+                        <div class="col-lg-8">
+                            <div class="header-search-block">
+                                <form action="shop" method="get">
+                                    <input type="text" name="search" placeholder="tìm kiếm ở đây">
+                                    <button type="submit">Search</button>
+                                </form>
+                                
+>>>>>>> a88a54425ce7ff7641bba212004330e83d64e854
                             </div>
                             <div class="col-lg-4">
                                 <div class="main-navigation flex-lg-right">
@@ -177,7 +191,30 @@
                             </nav>
                             <!-- mobile menu navigation end -->
                         </div>
+<<<<<<< HEAD
                         <!-- mobile menu end -->
+=======
+                    </div>
+                </div>
+            </header>
+            <!--Off Canvas Navigation Start-->
+            <aside class="off-canvas-wrapper">
+                <div class="btn-close-off-canvas">
+                    <i class="ion-android-close"></i>
+                </div>
+                <div class="off-canvas-inner">
+                    <!-- search box start -->
+                    <div class="search-box offcanvas">
+                        <form action="shop" method="get">
+                            <input type="text" placeholder="Search Here" name="search">
+                            <button class="search-btn" type="submit"><i class="ion-ios-search-strong"></i></button>
+                        </form>
+                    </div>
+                    <!-- search box end -->
+                    <!-- mobile menu start -->
+                    <div class="mobile-navigation">
+                        <!-- mobile menu navigation start -->
+>>>>>>> a88a54425ce7ff7641bba212004330e83d64e854
                         <nav class="off-canvas-nav">
                             <ul class="mobile-menu menu-block-2">                         
                                 <li class="menu-item-has-children">

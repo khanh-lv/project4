@@ -5,8 +5,15 @@
  */
 package controller;
 
+import entity.Books;
+import entity.Categories;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.persistence.Query;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -36,7 +43,7 @@ public class ShopServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ShopServlet</title>");            
+            out.println("<title>Servlet ShopServlet</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet ShopServlet at " + request.getContextPath() + "</h1>");
@@ -57,6 +64,58 @@ public class ShopServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        EntityManagerFactory factory = Persistence.createEntityManagerFactory("Project4PU");
+        EntityManager entity = factory.createEntityManager();
+
+        List<Object> bookList = null;
+        Query query = null;
+        if (request.getParameter("search") == null && request.getParameter("catid") == null) {
+            query = entity.createQuery("select b from Books b");
+        }
+        if (request.getParameter("search") != null && request.getParameter("catid") == null) {
+            String search = request.getParameter("search");
+            query = entity.createQuery("select b from Books b where b.title like '%" + search + "%'");
+        }
+        if (request.getParameter("search") == null && request.getParameter("catid") != null) {
+
+                
+                int catId = Integer.parseInt(request.getParameter("catid"));
+                query = entity.createQuery("select b from Books b, Categories c where b.catId = c and c.id = " + catId);
+            
+
+        }
+        if (request.getParameter("search") != null && request.getParameter("catid") != null) {
+            try {
+                String search = request.getParameter("search");
+                int catId = Integer.parseInt(request.getParameter("catid"));
+                query = entity.createQuery("select b from Books b, Categories c where b.title like '%" + search + "%' and b.catId = c and c.id = " + catId);
+            } catch (Exception e) {
+                query = entity.createQuery("select b from Books b");
+            }
+
+        }
+        int page;
+        if (request.getParameter("page") == null) {
+            page = 1;
+        } else {
+            try{
+                page = Integer.parseInt(request.getParameter("page"));
+            } catch(Exception e){
+                page = 1;
+            }
+            
+        }
+        int count = (int)query.getResultList().size()/12 + 1;
+        System.out.println(count);
+        bookList = query.setFirstResult((page -1)*12).setMaxResults(12).getResultList();
+        
+        Query query2 = entity.createQuery("select c from Categories c");
+        List<Object> categories = query2.getResultList();
+        entity.close();
+        factory.close();
+        request.setAttribute("categories", categories);
+        request.setAttribute("bookList", bookList);
+        request.setAttribute("count", count);
         RequestDispatcher rd = request.getRequestDispatcher("layout/shop.jsp");
         rd.forward(request, response);
     }
