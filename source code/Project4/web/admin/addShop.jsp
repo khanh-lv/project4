@@ -22,7 +22,7 @@
                                                 <input type="file">
                                             </div>
                                             <div class="form-group">
-                                                <label>Text area</label>
+                                                <label>Text areaaaa</label>
                                                 <textarea class="form-control" rows="3"></textarea>
                                             </div>
                                             <div class="form-group">
