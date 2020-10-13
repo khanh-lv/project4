@@ -18,6 +18,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -77,11 +78,17 @@ public class LoginServlet extends HttpServlet {
 
 
         Query q = em.createQuery("select u from Users u where u.email = '" + email + "' and u.password = '" + password + "'");
-        List<Users> userList = q.getResultList();
+        List<Object> userList = q.getResultList();
         
         if (userList.size() > 0) {
-            RequestDispatcher rd = request.getRequestDispatcher("/layout/index.jsp");
-            rd.include(request, response);
+            HttpSession session = request.getSession(false);
+            session.setAttribute("status", 1);
+//            session.setAttribute("user", userList.get(0));
+//            Users user = (Users) session.getAttribute("user");
+//            PrintWriter out = response.getWriter();
+//            out.print("Fullname: " +user.getFullname());
+            RequestDispatcher rd = request.getRequestDispatcher("home");
+            rd.forward(request, response);
         } else {
             // tao alert thong bao cho nguoi dung biet la email hay password bi sai. yu cau ho nhap lai
             PrintWriter out = response.getWriter();
