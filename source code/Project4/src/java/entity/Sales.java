@@ -23,13 +23,20 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author black
+ * @author PC
  */
 @Entity
 @Table(name = "sales")
-@NamedQueries({
-    @NamedQuery(name = "Sales.findAll", query = "SELECT s FROM Sales s")})
 @XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = "Sales.findAll", query = "SELECT s FROM Sales s")
+    , @NamedQuery(name = "Sales.findById", query = "SELECT s FROM Sales s WHERE s.id = :id")
+    , @NamedQuery(name = "Sales.findByTitle", query = "SELECT s FROM Sales s WHERE s.title = :title")
+    , @NamedQuery(name = "Sales.findByStartDate", query = "SELECT s FROM Sales s WHERE s.startDate = :startDate")
+    , @NamedQuery(name = "Sales.findByEndDate", query = "SELECT s FROM Sales s WHERE s.endDate = :endDate")
+    , @NamedQuery(name = "Sales.findByCreatedAt", query = "SELECT s FROM Sales s WHERE s.createdAt = :createdAt")
+    , @NamedQuery(name = "Sales.findByUpdatedAt", query = "SELECT s FROM Sales s WHERE s.updatedAt = :updatedAt")
+    , @NamedQuery(name = "Sales.findByStatus", query = "SELECT s FROM Sales s WHERE s.status = :status")})
 public class Sales implements Serializable {
 
     private static final long serialVersionUID = 1L;

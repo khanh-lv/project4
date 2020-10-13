@@ -1,5 +1,5 @@
 <jsp:include page="header.jsp" />
-
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <section class="breadcrumb-section">
 	<h2 class="sr-only">Site Breadcrumb</h2>
 	<div class="container">
@@ -41,12 +41,12 @@
 						</thead>
 						<tbody>
 							<tr>
-								<td><a href="single-product.html">Vans Off The Wall T-Shirt In</a> <strong>× 1</strong>
+								<td><a href="single-product.html">Vans Off The Wall T-Shirt In</a> <strong>Ã 1</strong>
 								</td>
 								<td><span>$59.00</span></td>
 							</tr>
 							<tr>
-								<td><a href="single-product.html">Supreme Being Icon Glitch T-Shirt</a> <strong>×
+								<td><a href="single-product.html">Supreme Being Icon Glitch T-Shirt</a> <strong>Ã
 										1</strong></td>
 								<td><span>$58.00</span></td>
 							</tr>

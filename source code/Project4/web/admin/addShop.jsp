@@ -1,5 +1,5 @@
 <jsp:include page="admin_header.jsp" />
-
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
         <div id="page-wrapper">
             <div class="container-fluid">
 
@@ -18,7 +18,7 @@
                                                 <input class="form-control" placeholder="Enter text">
                                             </div>
                                             <div class="form-group">
-                                                <label>File input</label>
+                                                <label>Chọn Ảnh</label>
                                                 <input type="file">
                                             </div>
                                             <div class="form-group">
@@ -26,7 +26,7 @@
                                                 <textarea class="form-control" rows="3"></textarea>
                                             </div>
                                             <div class="form-group">
-                                                <label>Selects</label>
+                                                <label>Chọn Thể Loại</label>
                                                 <select class="form-control">
                                                     <option>1</option>
                                                     <option>2</option>

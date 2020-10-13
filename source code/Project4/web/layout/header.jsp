@@ -176,6 +176,7 @@
                                     <a href="/Project4/shop">Shop</a>                               
                                 </li>
                                 <li><a href="/Project4/contact">Contact</a></li>
+                                <li><a href="/Project4/myaccount">MyAccount</a></li>
                             </ul>
                         </nav>
                         <!-- mobile menu navigation end -->
@@ -231,6 +232,9 @@
                                 </li>                               
                                 <li class="menu-item">
                                     <a href="/Project4/contact">Contact</a>
+                                </li>
+                                <li class="menu-item has-children">
+                                        <a href="/Project4/myaccount">My Account </a>
                                 </li>
                             </ul>
                         </div>

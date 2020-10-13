@@ -9,6 +9,7 @@ import entity.Books;
 import entity.Categories;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -132,6 +133,45 @@ public class ShopServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+        
+        String title = request.getParameter("title");
+        String thumbnail = request.getParameter("thumbnail");
+        String author = request.getParameter("author");
+        String publishingCompany = request.getParameter("publishingCompany");
+        int quantityInStock = Integer.parseInt(request.getParameter("quantityInStock"));
+        int price = Integer.parseInt(request.getParameter("price"));
+        String shortDes = request.getParameter("shortDes");
+        String description = request.getParameter("description");
+        int publishingYear = Integer.parseInt(request.getParameter("publishingYear"));
+        int status = Integer.parseInt(request.getParameter("status"));
+        int id = Integer.parseInt(request.getParameter("id"));
+        Date date = new Date();
+
+
+        //save into sdb
+        EntityManagerFactory factory = Persistence.createEntityManagerFactory("Project4PU");
+        EntityManager em = factory.createEntityManager();
+
+        Books books = new Books();
+        books.setTitle(title);
+        books.setThumbnail(thumbnail);
+        books.setAuthor(author);
+        books.setPublishingCompany(publishingCompany);
+        books.setPublishingYear(publishingYear);
+        books.setQuantityInStock(quantityInStock);
+        books.setPrice(price);
+        books.setShortDes(shortDes);
+        books.setDescription(description);
+        
+        
+
+        em.getTransaction().begin();
+        em.persist(books);
+        
+        em.getTransaction().commit();
+        
+        RequestDispatcher rd = request.getRequestDispatcher("admin/shop.jsp");
+        rd.forward(request, response);
     }
 
     /**

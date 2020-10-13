@@ -3,7 +3,7 @@
     Created on : Sep 26, 2020, 1:23:47 AM
     Author     : PC
 --%>
-
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <!--=================================
         Footer
@@ -79,15 +79,15 @@
                                     <p class="tag-block">Tags: <a href="#">Movado</a>, <a href="#">Omega</a></p>
                                     <h3 class="product-title">Beats EP Wired On-Ear Headphone-Black</h3>
                                     <ul class="list-unstyled">
-                                        <li>Ex Tax: <span class="list-value"> £60.24</span></li>
+                                        <li>Ex Tax: <span class="list-value"> Â£60.24</span></li>
                                         <li>Brands: <a href="#" class="list-value font-weight-bold"> Canon</a></li>
                                         <li>Product Code: <span class="list-value"> model1</span></li>
                                         <li>Reward Points: <span class="list-value"> 200</span></li>
                                         <li>Availability: <span class="list-value"> In Stock</span></li>
                                     </ul>
                                     <div class="price-block">
-                                        <span class="price-new">£73.79</span>
-                                        <del class="price-old">£91.86</del>
+                                        <span class="price-new">Â£73.79</span>
+                                        <del class="price-old">Â£91.86</del>
                                     </div>
                                     <div class="rating-widget">
                                         <div class="rating-block">
@@ -199,11 +199,9 @@
                             <img src="layout/image/logo--footer.png" alt="">
                         </div>
                         <div class="footer-contact">
-                            <p><span class="label">Address:</span><span class="text">Example Street 98, HH2 BacHa, New
-                                    York,
-                                    USA</span></p>
-                            <p><span class="label">Phone:</span><span class="text">+18088 234 5678</span></p>
-                            <p><span class="label">Email:</span><span class="text">suport@hastech.com</span></p>
+                            <p><span class="label">Address:</span><span class="text">285 Đội Cấn - Ba Đình - Hà Nội</span></p>
+                            <p><span class="label">Phone:</span><span class="text">0936996646</span></p>
+                            <p><span class="label">Email:</span><span class="text">LocDao1280@gmail.com</span></p>
                         </div>
                     </div>
                 </div>
@@ -213,11 +211,10 @@
                             <h3>Information</h3>
                         </div>
                         <ul class="footer-list normal-list">
-                            <li><a href="#">Prices drop</a></li>
-                            <li><a href="#">New products</a></li>
-                            <li><a href="#">Best sales</a></li>
-                            <li><a href="#">Contact us</a></li>
-                            <li><a href="#">Sitemap</a></li>
+                            <li><a href="/Project4/shop">Prices drop</a></li>
+                            <li><a href="/Project4">New products</a></li>
+                            <li><a href="/Project4/shop">Best sales</a></li>
+                            <li><a href="/Project4/contact">Contact us</a></li>
                         </ul>
                     </div>
                 </div>
@@ -227,11 +224,10 @@
                             <h3>Extras</h3>
                         </div>
                         <ul class="footer-list normal-list">
-                            <li><a href="#">Delivery</a></li>
-                            <li><a href="#">About Us</a></li>
-                            <li><a href="#">Stores</a></li>
-                            <li><a href="#">Contact us</a></li>
-                            <li><a href="#">Sitemap</a></li>
+                            <li><a href="/Project4/contact">Delivery</a></li>
+                            <li><a href="/Project4">About Us</a></li>
+                            <li><a href="/Project4/shop">Stores</a></li>
+                            <li><a href="/Project4/contact">Contact us</a></li>
                         </ul>
                     </div>
                 </div>
@@ -261,15 +257,13 @@
         </div>
         <div class="footer-bottom">
             <div class="container">
-                <p class="copyright-heading">Suspendisse in auctor augue. Cras fermentum est ac fermentum tempor. Etiam
-                    vel
-                    magna volutpat, posuere eros</p>
+                <p class="copyright-heading">Chào Mừng Bạn Đã Đến Với Cửa Hàng Của Chúng Tôi</p>
                 <a href="#" class="payment-block">
                     <img src="layout/image/icon/payment.png" alt="">
                 </a>
-                <p class="copyright-text">Copyright © 2019 <a href="#" class="author">Pustok</a>. All Right Reserved.
+                <p class="copyright-text">Copyright © 2020 <a href="/Project4" class="author">Pustok</a>. All Right Reserved.
                     <br>
-                    Design By Pustok</p>
+                    Design By Team1</p>
             </div>
         </div>
     </footer>

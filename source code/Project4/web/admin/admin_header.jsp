@@ -3,7 +3,7 @@
     Created on : Oct 8, 2020, 5:27:47 PM
     Author     : PC
 --%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,7 +18,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Startmin - Bootstrap Admin Theme</title>
+    <title>DashBoard</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="admin/css/bootstrap.min.css" rel="stylesheet">
@@ -53,7 +53,7 @@
         <!-- Navigation -->
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <div class="navbar-header">
-                <a class="navbar-brand" href="index.html">Startmin</a>
+                <a class="navbar-brand" href="/Project4/admin">Startmin</a>
             </div>
 
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -64,7 +64,7 @@
             </button>
 
             <ul class="nav navbar-nav navbar-left navbar-top-links">
-                <li><a href="#"><i class="fa fa-home fa-fw"></i> Website</a></li>
+                <li><a href="/Project4/home"><i class="fa fa-home fa-fw"></i> Website</a></li>
             </ul>
 
             <ul class="nav navbar-right navbar-top-links">
@@ -104,26 +104,36 @@
                             <a href="#" class="active"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-wrench fa-fw"></i> San Pham<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-wrench fa-fw"></i>Phản Hồi<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="#">Danh sach</a>
+                                    <a href="/Project4/listFeedback">Danh Sách</a>
+                                </li>                               
+
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-wrench fa-fw"></i>Cửa Hàng <span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="/Project4/listShop">Danh Sách</a>
                                 </li>
                                 <li>
-                                    <a href="#">Them Moi</a>
+                                    <a href="/Project4/addshop">Thêm Mới</a>
                                 </li>
 
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-wrench fa-fw"></i> San Pham<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-wrench fa-fw"></i>Thể Loại<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="#">Danh sach</a>
+                                    <a href="/Project4/listShop">Danh Sách</a>
                                 </li>
                                 <li>
-                                    <a href="#">Them Moi</a>
+                                    <a href="/Project4/addshop">Thêm Mới</a>
                                 </li>
 
                             </ul>

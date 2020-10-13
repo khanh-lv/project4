@@ -26,13 +26,22 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author black
+ * @author PC
  */
 @Entity
 @Table(name = "orders")
-@NamedQueries({
-    @NamedQuery(name = "Orders.findAll", query = "SELECT o FROM Orders o")})
 @XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = "Orders.findAll", query = "SELECT o FROM Orders o")
+    , @NamedQuery(name = "Orders.findByOrdercode", query = "SELECT o FROM Orders o WHERE o.ordercode = :ordercode")
+    , @NamedQuery(name = "Orders.findByFullname", query = "SELECT o FROM Orders o WHERE o.fullname = :fullname")
+    , @NamedQuery(name = "Orders.findByAddress", query = "SELECT o FROM Orders o WHERE o.address = :address")
+    , @NamedQuery(name = "Orders.findByPhone", query = "SELECT o FROM Orders o WHERE o.phone = :phone")
+    , @NamedQuery(name = "Orders.findByEmail", query = "SELECT o FROM Orders o WHERE o.email = :email")
+    , @NamedQuery(name = "Orders.findByTotal", query = "SELECT o FROM Orders o WHERE o.total = :total")
+    , @NamedQuery(name = "Orders.findByCreatedAt", query = "SELECT o FROM Orders o WHERE o.createdAt = :createdAt")
+    , @NamedQuery(name = "Orders.findByUpdatedAt", query = "SELECT o FROM Orders o WHERE o.updatedAt = :updatedAt")
+    , @NamedQuery(name = "Orders.findByStatus", query = "SELECT o FROM Orders o WHERE o.status = :status")})
 public class Orders implements Serializable {
 
     private static final long serialVersionUID = 1L;

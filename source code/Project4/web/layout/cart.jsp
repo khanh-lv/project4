@@ -1,5 +1,5 @@
 <jsp:include page="header.jsp" />
-
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
         <section class="breadcrumb-section">
 			<h2 class="sr-only">Site Breadcrumb</h2>
 			<div class="container">
@@ -111,7 +111,7 @@
 						<div class="col-lg-6 col-12 mb--30 mb-lg--0">
 							<!-- slide Block 5 / Normal Slider -->
 							<div class="cart-block-title">
-								<h2>YOU MAY BE INTERESTED IN…</h2>
+								<h2>YOU MAY BE INTERESTED INâ¦</h2>
 							</div>
 							<div class="product-slider sb-slick-slider" data-slick-setting='{
 							          "autoplay": true,
@@ -158,8 +158,8 @@
 												</div>
 											</div>
 											<div class="price-block">
-												<span class="price">£51.20</span>
-												<del class="price-old">£51.20</del>
+												<span class="price">Â£51.20</span>
+												<del class="price-old">Â£51.20</del>
 												<span class="price-discount">20%</span>
 											</div>
 										</div>
@@ -198,8 +198,8 @@
 												</div>
 											</div>
 											<div class="price-block">
-												<span class="price">£51.20</span>
-												<del class="price-old">£51.20</del>
+												<span class="price">Â£51.20</span>
+												<del class="price-old">Â£51.20</del>
 												<span class="price-discount">20%</span>
 											</div>
 										</div>
@@ -238,8 +238,8 @@
 												</div>
 											</div>
 											<div class="price-block">
-												<span class="price">£51.20</span>
-												<del class="price-old">£51.20</del>
+												<span class="price">Â£51.20</span>
+												<del class="price-old">Â£51.20</del>
 												<span class="price-discount">20%</span>
 											</div>
 										</div>
@@ -279,8 +279,8 @@
 												</div>
 											</div>
 											<div class="price-block">
-												<span class="price">£51.20</span>
-												<del class="price-old">£51.20</del>
+												<span class="price">Â£51.20</span>
+												<del class="price-old">Â£51.20</del>
 												<span class="price-discount">20%</span>
 											</div>
 										</div>
@@ -319,8 +319,8 @@
 												</div>
 											</div>
 											<div class="price-block">
-												<span class="price">£51.20</span>
-												<del class="price-old">£51.20</del>
+												<span class="price">Â£51.20</span>
+												<del class="price-old">Â£51.20</del>
 												<span class="price-discount">20%</span>
 											</div>
 										</div>

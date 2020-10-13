@@ -21,17 +21,23 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Size;
-
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author black
+ * @author PC
  */
 @Entity
 @Table(name = "categories")
+@XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Categories.findAll", query = "SELECT c FROM Categories c")})
-
+    @NamedQuery(name = "Categories.findAll", query = "SELECT c FROM Categories c")
+    , @NamedQuery(name = "Categories.findById", query = "SELECT c FROM Categories c WHERE c.id = :id")
+    , @NamedQuery(name = "Categories.findByCatName", query = "SELECT c FROM Categories c WHERE c.catName = :catName")
+    , @NamedQuery(name = "Categories.findByCreatedAt", query = "SELECT c FROM Categories c WHERE c.createdAt = :createdAt")
+    , @NamedQuery(name = "Categories.findByUpdatedAt", query = "SELECT c FROM Categories c WHERE c.updatedAt = :updatedAt")
+    , @NamedQuery(name = "Categories.findByStatus", query = "SELECT c FROM Categories c WHERE c.status = :status")})
 public class Categories implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -101,7 +107,7 @@ public class Categories implements Serializable {
         this.status = status;
     }
 
-
+    @XmlTransient
     public Collection<Books> getBooksCollection() {
         return booksCollection;
     }

@@ -18,13 +18,19 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author black
+ * @author PC
  */
 @Entity
 @Table(name = "orderdetail")
-@NamedQueries({
-    @NamedQuery(name = "Orderdetail.findAll", query = "SELECT o FROM Orderdetail o")})
 @XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = "Orderdetail.findAll", query = "SELECT o FROM Orderdetail o")
+    , @NamedQuery(name = "Orderdetail.findByOrdercode", query = "SELECT o FROM Orderdetail o WHERE o.orderdetailPK.ordercode = :ordercode")
+    , @NamedQuery(name = "Orderdetail.findByBookId", query = "SELECT o FROM Orderdetail o WHERE o.orderdetailPK.bookId = :bookId")
+    , @NamedQuery(name = "Orderdetail.findByQuantity", query = "SELECT o FROM Orderdetail o WHERE o.quantity = :quantity")
+    , @NamedQuery(name = "Orderdetail.findByPrice", query = "SELECT o FROM Orderdetail o WHERE o.price = :price")
+    , @NamedQuery(name = "Orderdetail.findByDiscountPrice", query = "SELECT o FROM Orderdetail o WHERE o.discountPrice = :discountPrice")
+    , @NamedQuery(name = "Orderdetail.findByTotal", query = "SELECT o FROM Orderdetail o WHERE o.total = :total")})
 public class Orderdetail implements Serializable {
 
     private static final long serialVersionUID = 1L;

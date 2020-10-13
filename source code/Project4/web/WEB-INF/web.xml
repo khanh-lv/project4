@@ -48,6 +48,18 @@
         <servlet-name>DashboardServlet</servlet-name>
         <servlet-class>controller.DashboardServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ListContactServlet</servlet-name>
+        <servlet-class>controller.ListContactServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ListShopServlet</servlet-name>
+        <servlet-class>controller.ListShopServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddShopServlet</servlet-name>
+        <servlet-class>controller.AddShopServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Index</servlet-name>
         <url-pattern>/home</url-pattern>
@@ -98,6 +110,18 @@
     <servlet-mapping>
         <servlet-name>DashboardServlet</servlet-name>
         <url-pattern>/admin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListContactServlet</servlet-name>
+        <url-pattern>/listFeedback</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListShopServlet</servlet-name>
+        <url-pattern>/listShop</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddShopServlet</servlet-name>
+        <url-pattern>/addshop</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

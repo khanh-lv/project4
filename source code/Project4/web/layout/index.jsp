@@ -7,6 +7,8 @@
 <%@page import="entity.Books"%>
 <%@page import="entity.Books"%>
 <jsp:include page="header.jsp"/>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!--=================================
 Hero Area
 ===================================== -->

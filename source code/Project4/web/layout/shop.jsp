@@ -3,6 +3,7 @@
 <%@page import="entity.Categories"%>
 <%@page import="entity.Categories"%>
 <jsp:include page="header.jsp" />
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 
         <section class="breadcrumb-section">
             <h2 class="sr-only">Site Breadcrumb</h2>
@@ -356,7 +357,7 @@
                                                             href="#">Omega</a></p>
                                                     <h3 class="product-title">Beats EP Wired On-Ear Headphone-Black</h3>
                                                     <ul class="list-unstyled">
-                                                        <li>Ex Tax: <span class="list-value"> £60.24</span></li>
+                                                        <li>Ex Tax: <span class="list-value"> Â£60.24</span></li>
                                                         <li>Brands: <a href="#" class="list-value font-weight-bold">
                                                                 Canon</a></li>
                                                         <li>Product Code: <span class="list-value"> model1</span></li>
@@ -364,8 +365,8 @@
                                                         <li>Availability: <span class="list-value"> In Stock</span></li>
                                                     </ul>
                                                     <div class="price-block">
-                                                        <span class="price-new">£73.79</span>
-                                                        <del class="price-old">£91.86</del>
+                                                        <span class="price-new">Â£73.79</span>
+                                                        <del class="price-old">Â£91.86</del>
                                                     </div>
                                                     <div class="rating-widget">
                                                         <div class="rating-block">

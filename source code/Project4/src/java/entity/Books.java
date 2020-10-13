@@ -25,17 +25,30 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Size;
-
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author black
+ * @author PC
  */
 @Entity
 @Table(name = "books")
+@XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Books.findAll", query = "SELECT b FROM Books b")})
-
+    @NamedQuery(name = "Books.findAll", query = "SELECT b FROM Books b")
+    , @NamedQuery(name = "Books.findById", query = "SELECT b FROM Books b WHERE b.id = :id")
+    , @NamedQuery(name = "Books.findByTitle", query = "SELECT b FROM Books b WHERE b.title = :title")
+    , @NamedQuery(name = "Books.findByThumbnail", query = "SELECT b FROM Books b WHERE b.thumbnail = :thumbnail")
+    , @NamedQuery(name = "Books.findByAuthor", query = "SELECT b FROM Books b WHERE b.author = :author")
+    , @NamedQuery(name = "Books.findByPublishingCompany", query = "SELECT b FROM Books b WHERE b.publishingCompany = :publishingCompany")
+    , @NamedQuery(name = "Books.findByPublishingYear", query = "SELECT b FROM Books b WHERE b.publishingYear = :publishingYear")
+    , @NamedQuery(name = "Books.findByQuantityInStock", query = "SELECT b FROM Books b WHERE b.quantityInStock = :quantityInStock")
+    , @NamedQuery(name = "Books.findByPrice", query = "SELECT b FROM Books b WHERE b.price = :price")
+    , @NamedQuery(name = "Books.findByShortDes", query = "SELECT b FROM Books b WHERE b.shortDes = :shortDes")
+    , @NamedQuery(name = "Books.findByCreatedAt", query = "SELECT b FROM Books b WHERE b.createdAt = :createdAt")
+    , @NamedQuery(name = "Books.findByUpdatedAt", query = "SELECT b FROM Books b WHERE b.updatedAt = :updatedAt")
+    , @NamedQuery(name = "Books.findByStatus", query = "SELECT b FROM Books b WHERE b.status = :status")})
 public class Books implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -202,7 +215,7 @@ public class Books implements Serializable {
         this.catId = catId;
     }
 
-
+    @XmlTransient
     public Collection<Orderdetail> getOrderdetailCollection() {
         return orderdetailCollection;
     }

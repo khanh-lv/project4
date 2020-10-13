@@ -1,5 +1,5 @@
 <jsp:include page="header.jsp" />
-
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
         <section class="breadcrumb-section">
 			<h2 class="sr-only">Site Breadcrumb</h2>
 			<div class="container">
@@ -50,7 +50,7 @@
 														<a href="#" class="btn btn-outlined   mr-3">Login</a>
 														<div class="d-inline-flex align-items-center">
 															<input type="checkbox" id="accept_terms" class="mb-0 mr-1">
-															<label for="accept_terms" class="mb-0">I’ve read and accept
+															<label for="accept_terms" class="mb-0">Iâve read and accept
 																the terms &amp; conditions</label>
 														</div>
 													</div>
@@ -233,7 +233,7 @@
 												</div>
 												<div class="term-block">
 													<input type="checkbox" id="accept_terms2">
-													<label for="accept_terms2">I’ve read and accept the terms &
+													<label for="accept_terms2">Iâve read and accept the terms &
 														conditions</label>
 												</div>
 												<button class="place-order w-100">Place order</button>

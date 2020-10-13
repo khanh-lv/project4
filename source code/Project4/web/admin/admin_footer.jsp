@@ -3,7 +3,7 @@
     Created on : Oct 8, 2020, 5:28:45 PM
     Author     : PC
 --%>
-
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 
     <!-- jQuery -->
     <script src="admin/js/jquery.min.js"></script>

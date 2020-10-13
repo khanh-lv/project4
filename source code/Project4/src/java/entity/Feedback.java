@@ -19,16 +19,24 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Size;
-
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author black
+ * @author PC
  */
 @Entity
 @Table(name = "feedback")
+@XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Feedback.findAll", query = "SELECT f FROM Feedback f")})
+    @NamedQuery(name = "Feedback.findAll", query = "SELECT f FROM Feedback f")
+    , @NamedQuery(name = "Feedback.findById", query = "SELECT f FROM Feedback f WHERE f.id = :id")
+    , @NamedQuery(name = "Feedback.findByFullname", query = "SELECT f FROM Feedback f WHERE f.fullname = :fullname")
+    , @NamedQuery(name = "Feedback.findByEmail", query = "SELECT f FROM Feedback f WHERE f.email = :email")
+    , @NamedQuery(name = "Feedback.findByContent", query = "SELECT f FROM Feedback f WHERE f.content = :content")
+    , @NamedQuery(name = "Feedback.findByCreatedAt", query = "SELECT f FROM Feedback f WHERE f.createdAt = :createdAt")
+    , @NamedQuery(name = "Feedback.findByUpdatedAt", query = "SELECT f FROM Feedback f WHERE f.updatedAt = :updatedAt")
+    , @NamedQuery(name = "Feedback.findByStatus", query = "SELECT f FROM Feedback f WHERE f.status = :status")})
 public class Feedback implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -53,6 +61,8 @@ public class Feedback implements Serializable {
     @Column(name = "updated_at")
     @Temporal(TemporalType.DATE)
     private Date updatedAt;
+    @Column(name = "status")
+    private Integer status;
 
     public Feedback() {
     }
@@ -107,6 +117,14 @@ public class Feedback implements Serializable {
 
     public void setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 
     @Override

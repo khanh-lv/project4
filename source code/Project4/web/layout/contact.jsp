@@ -16,6 +16,7 @@
  
 </script>
 <jsp:include page="header.jsp" />
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 
         <section class="breadcrumb-section">
             <h2 class="sr-only">Site Breadcrumb</h2>
