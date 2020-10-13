@@ -7,10 +7,78 @@
     }
 %>
 <jsp:include page="header.jsp" />
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<script>
+     function validateForm(){    
+        var fullname = document.getElementById("fullname");
+        var email = document.getElementById("email");
+        var password = document.getElementById("password");
+        var repassword = document.getElementById("repeat-password");
+        var address = document.getElementById("address");
+        var phone = document.getElementById("phone"); 
+        
+        if (password.value!= repassword.value) {
+            var element = document.getElementById("alertpass");
+            element.style.display = "";
+            password.style.border = "solid red 1px";
+            repassword.style.border = "solid red 1px";
+            
+            return false;
+        }
+        if (fullname.value == ""){
+            var element = document.getElementById("alertfullname");
+            element.style.display = "";
+            fullname.style.border = "solid red 1px";
 
+            return false;
+        }
+        
+        if (email.value == ""){
+            var element = document.getElementById("alertemail");
+            element.style.display = "";
+            email.style.border = "solid red 1px";
 
+            return false;
+        }
+        
+        if (password.value == ""){
+            var element = document.getElementById("alertpassword");
+            element.style.display = "";
+            password.style.border = "solid red 1px";
+
+            return false;
+        }
+        
+        if (repassword.value == ""){
+            var element = document.getElementById("alertrepass");
+            element.style.display = "";
+            repassword.style.border = "solid red 1px";
+
+            return false;
+        }
+        
+        if (address.value == ""){
+            var element = document.getElementById("alertaddress");
+            element.style.display = "";
+            address.style.border = "solid red 1px";
+
+            return false;
+        }
+        
+        if (phone.value == ""){
+            var element = document.getElementById("alertphone");
+            element.style.display = "";
+            phone.style.border = "solid red 1px";
+
+            return false;
+        }
+        
+//        if (fullname == "" || email == "" || password == "" || repassword == "" || address == "" || phone == "") {
+//            alert("Register fail, please enter full registration infomation");
+//            return false;
+//        }  
+    }   
+</script>
 <section class="breadcrumb-section">
     <h2 class="sr-only">Site Breadcrumb</h2>
     <div class="container">
@@ -89,75 +157,6 @@
     </div>
 </main>
 </div>
-
-
-<script>
-    function validate(){
-        var fullname = document.getElementById("fullname");
-        var email = document.getElementById("email");
-        var password = document.getElementById("password");
-        var repassword = document.getElementById("repassword");
-        var address = document.getElementById("address");
-        var phone = document.getElementById("phone");
-        
-        if (!password.value.equals (repassword.value)) {
-            var element = document.getElementById("alertpass");
-            element.style.display = "";
-            password.style.border = "solid red 1px";
-            repassword.style.border = "solid red 1px";
-        }
-        if (fullname.value === ""){
-        var element = document.getElementById("alert");
-        element.style.display = "";
-        fullname.style.border = "solid red 1px";
-        
-        return false;
-        }
-        
-        if (email.value === ""){
-        var element = document.getElementById("alertemail");
-        element.style.display = "";
-        email.style.border = "solid red 1px";
-        
-        return false;
-        }
-        
-        if (password.value === ""){
-        var element = document.getElementById("alertpassword");
-        element.style.display = "";
-        password.style.border = "solid red 1px";
-        
-        return false;
-        }
-        
-        if (repassword.value === ""){
-        var element = document.getElementById("alertrepass");
-        element.style.display = "";
-        repassword.style.border = "solid red 1px";
-        
-        return false;
-        }
-        
-        if (address.value === ""){
-        var element = document.getElementById("alertaddress");
-        element.style.display = "";
-        address.style.border = "solid red 1px";
-        
-        return false;
-        }
-        
-        if (phone.value === ""){
-        var element = document.getElementById("alertaddress");
-        element.style.display = "";
-        phone.style.border = "solid red 1px";
-        
-        return false;
-        }
-        
-        return true;
-    }
-    
-</script>
 
 
 <jsp:include page="footer.jsp" />
