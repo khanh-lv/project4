@@ -59,6 +59,10 @@
     <servlet>
         <servlet-name>AddShopServlet</servlet-name>
         <servlet-class>controller.AddShopServlet</servlet-class>
+    </servlet>    
+    <servlet>    
+        <servlet-name>LogoutServlet</servlet-name>
+        <servlet-class>controller.LogoutServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Index</servlet-name>
@@ -122,6 +126,10 @@
     <servlet-mapping>
         <servlet-name>AddShopServlet</servlet-name>
         <url-pattern>/addshop</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LogoutServlet</servlet-name>
+        <url-pattern>/logout</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -1,3 +1,29 @@
+<script>
+    function validate(){
+       
+        var email = document.getElementById("email");
+        var password = document.getElementById("login-password");
+        
+        if (email.value == ""){
+        var element = document.getElementById("alertemail");
+        element.style.display = "";
+        email.style.border = "solid red 1px";
+        
+        return false;
+        }
+        
+        if (password.value == ""){
+        var element = document.getElementById("alertpassword");
+        element.style.display = "";
+        password.style.border = "solid red 1px";
+        
+        return false;
+        }
+        
+        return true;
+    }
+    
+</script>
 <jsp:include page="header.jsp" />
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
         <section class="breadcrumb-section">
@@ -49,32 +75,4 @@
 			</div>
 		</main>
 	</div>
-<script>
-    function validate(){
-       
-        var email = document.getElementById("email");
-        var password = document.getElementById("login-password");
-        
-        if (email.value == ""){
-        var element = document.getElementById("alertemail");
-        element.style.display = "";
-        email.style.border = "solid red 1px";
-        
-        return false;
-        }
-        
-        if (password.value == ""){
-        var element = document.getElementById("alertpassword");
-        element.style.display = "";
-        password.style.border = "solid red 1px";
-        
-        return false;
-        }
-        
-        return true;
-    }
-    
-</script>
-
-
     <jsp:include page="footer.jsp" />

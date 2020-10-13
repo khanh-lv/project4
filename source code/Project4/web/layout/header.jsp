@@ -4,7 +4,9 @@
     Author     : PC
 --%>
 
-
+<%
+    System.out.println("status: " + session.getAttribute("status"));
+%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -53,9 +55,19 @@
                                     <li class="menu-item">
                                         <a href="/Project4/contact">Contact</a>
                                     </li>
-                                    <li class="menu-item has-children">
-                                        <a href="/Project4/myaccount">My Account </a>
-                                    </li>
+                                    <%
+                                        
+                                        
+                                        if(session.getAttribute("status") != null){
+                                            int status = (Integer) session.getAttribute("status");
+                                            
+                                            if(status == 1){
+                                                out.print("<li class='menu-item has-children'>");
+                                                out.print(" <a href='/Project4/myaccount'>My Account </a>");
+                                                out.print("</li>");
+                                            }
+                                        }
+                                    %>
                                 </ul>
                             </div>
                         </div>
@@ -77,9 +89,17 @@
                         <div class="col-lg-4">
                             <div class="main-navigation flex-lg-right">
                                 <div class="cart-widget">
-                                    <div class="login-block">
-                                        <a href="/Project4/login" class="font-weight-bold">Login</a>
-                                    </div>
+                                    <%
+                                        if(session.getAttribute("status") == null){
+                                            
+                                                out.print("<div class='login-block'>");
+                                                out.print("<a href='/Project4/login' class='font-weight-bold'>Login</a>");
+                                                out.print("</div>");
+                                            
+                                        }
+                                    
+                                    %>
+                                    
                                     <div class="cart-block">
                                         <div class="cart-total">
                                             <span class="text-number">

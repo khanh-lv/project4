@@ -1,3 +1,4 @@
+<%@page import="entity.Users"%>
 <jsp:include page="header.jsp" />
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <section class="breadcrumb-section">
@@ -23,9 +24,8 @@
 						<div class="myaccount-tab-menu nav" role="tablist">
 							<a href="#dashboad" class="active" data-toggle="tab"><i class="fas fa-tachometer-alt"></i>Dashboard</a>
 							<a href="#orders" data-toggle="tab"><i class="fa fa-cart-arrow-down"></i> Orders</a>
-							<a href="#address-edit" data-toggle="tab"><i class="fa fa-map-marker"></i> address</a>
 							<a href="#account-info" data-toggle="tab"><i class="fa fa-user"></i> Account Details</a>
-							<a href="login-register.html"><i class="fas fa-sign-out-alt"></i> Logout</a>
+							<a href = "logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
 						</div>
 					</div>
 					<!-- My Account Tab Menu End -->
@@ -117,14 +117,10 @@
 									<div class="account-details-form">
 										<form action="#">
 											<div class="row">
-												<div class="col-lg-6 col-12  mb--30">
-													<input id="first-name" placeholder="First Name" type="text">
-												</div>
-												<div class="col-lg-6 col-12  mb--30">
-													<input id="last-name" placeholder="Last Name" type="text">
-												</div>
+												
 												<div class="col-12  mb--30">
-													<input id="display-name" placeholder="Display Name" type="text">
+													<input id="display-name" placeholder="Fullname" type="text">
+                                                                                                       
 												</div>
 												<div class="col-12  mb--30">
 													<input id="email" placeholder="Email Address" type="email">

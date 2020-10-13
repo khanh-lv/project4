@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Date;
 import java.util.List;
+import java.util.regex.Pattern;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -73,22 +74,14 @@ public class RegisterServlet extends HttpServlet {
              
         String address = request.getParameter("address");
         String phone = request.getParameter("phone");
-//        if(validate(fullname, email, password, repassword, address, phone)) {
+        if(validate(fullname, email, password, repassword, address, phone)) {
             EntityManagerFactory emf = Persistence.createEntityManagerFactory("Project4PU");
             EntityManager em = emf.createEntityManager();
             if(!checkk(email)) {
                 Users users = new Users();
                 users.setFullname(fullname);
                 users.setEmail(email);
-                if(password.equals(repassword)){
-                    users.setPassword(password);
-                } 
-//                else {
-//                    PrintWriter out = response.getWriter();
-//                    out.print("<script>alert('Repassword and Password is incorrect!');</script>");
-//                    RequestDispatcher rd = request.getRequestDispatcher("layout/register.jsp");
-//                    rd.forward(request, response);
-//                }  
+                users.setPassword(password);
                 users.setAddress(address);
                 users.setPhone(phone);
                 users.setStatus(1);
@@ -107,12 +100,13 @@ public class RegisterServlet extends HttpServlet {
                 rd.forward(request, response);
             } else {
                 
-                PrintWriter out = response.getWriter();
-                out.print("<script>alert('Register fail, please check again!');</script>");
+                request.setAttribute("message1", "Fail!");
+
+                request.setAttribute("message", "Email has been registered, please check again!");
                 RequestDispatcher rd = request.getRequestDispatcher("layout/register.jsp");
                 rd.forward(request, response);
             }    
-//        }
+        }
     }
 
     /**
@@ -124,9 +118,38 @@ public class RegisterServlet extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-    public boolean validate(String fullname, String email, String password, String address, String phone, String repassword) {  
+    public boolean validate(String fullname, String email, String password, String address, String phone, String repassword) { 
+        if (!Pattern.matches("[a-zA-Z ]{1,50}", fullname)) {  
+            return false;
+        }  
+        String emailRegex = "^[a-z][a-z0-9_\\.]{5,32}@[a-z0-9]{2,}.[a-z]{2,4}.[a-z]{2,4}";
+        if (!Pattern.matches(emailRegex, email)) {  
+            return false;
+        }  
+        if (address.length() > 250) {
+            return false;
+        }
+        if (fullname.length() > 50) {
+            return false;
+        }
+        if (password.length() > 15) {
+            return false;
+        }
+        if (phone.length() > 15 && phone.length() < 10) {
+            return false;
+        }
+//        Ít nhất một chữ cái viết hoa tiếng Anh ,(?=.*?[A-Z])
+//        Ít nhất một chữ cái tiếng Anh viết thường, (?=.*?[a-z])
+//        Ít nhất một chữ số, (?=.*?[0-9])
+//        Ít nhất một nhân vật đặc biệt, (?=.*?[#?!@$%^&*-])
+//        Chiều dài tối thiểu tám .{8,}(với các neo)
+        if (!Pattern.matches("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,15}", password)) {  
+            return false;
+        }  
         
-        
+//        if (!password.equals(repassword)) {
+//            return false;
+//        }
         return true;
     }
     public boolean checkk(String email) {
