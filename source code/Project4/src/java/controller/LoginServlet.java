@@ -83,6 +83,7 @@ public class LoginServlet extends HttpServlet {
         if (userList.size() > 0) {
             HttpSession session = request.getSession(false);
             session.setAttribute("status", 1);
+            session.setAttribute("user", userList.get(0));
 //            session.setAttribute("user", userList.get(0));
 //            Users user = (Users) session.getAttribute("user");
 //            PrintWriter out = response.getWriter();
