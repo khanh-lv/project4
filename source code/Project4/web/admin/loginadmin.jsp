@@ -34,12 +34,14 @@
                     <i class="fas fa-users"></i>
                 </div>
                 <div class="header__title">
-                    <h2>User Login</h2>
+                    <h2>Admin Login</h2>
                 </div>
             </div>
             <form
-                action=""
+                action="/Project4/loginadmin"
                 class="form"
+                method="post"
+                
                 onsubmit="onSubmitForm(this);
                         return false;"
                 >
@@ -50,9 +52,9 @@
                     <div class="form__username--input form__input">
                         <input
                             type="text"
-                            id="username"
-                            placeholder="Username"
-                            name="username"
+                            id="email"
+                            placeholder="Email"
+                            name="email"
                             />
                     </div>
                 </div>
