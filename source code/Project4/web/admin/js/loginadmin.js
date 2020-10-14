@@ -64,7 +64,7 @@ const validation = (username, password) => {
 };
 const login = (username, password) => {
     if (username === "admin" && password === "admin") {
-        window.location.assign("./dashboard.html");
+        window.location.assign("./admin");
         return true;
     }
     return false;

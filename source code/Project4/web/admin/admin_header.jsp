@@ -6,7 +6,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -101,7 +101,7 @@
                             <!-- /input-group -->
                         </li>
                         <li>
-                            <a href="#" class="active"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                            <a href="/Project4/admin" class="active"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-wrench fa-fw"></i>Phản Hồi<span class="fa arrow"></span></a>
@@ -133,7 +133,7 @@
                                     <a href="/Project4/listShop">Danh Sách</a>
                                 </li>
                                 <li>
-                                    <a href="/Project4/addshop">Thêm Mới</a>
+                                    <a href="/Project4/addShop">Thêm Mới</a>
                                 </li>
 
                             </ul>

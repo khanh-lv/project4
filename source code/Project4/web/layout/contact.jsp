@@ -6,8 +6,10 @@
         alert('Wrong content!');
     }
     
-    if (/^\s*$/g.test(content)) {
+    else if (/^\s*$/g.test(content)) {
         alert('Wrong content!');
+    }else{
+        alert('Thank You');
     }
     
     
@@ -43,14 +45,14 @@
                                     <div class="col-lg-12">
                                         <div class="form-group">
                                             <label>Your Name <span class="required">*</span></label>
-                                            <input type="text" id="con_name"  name="name" class="form-control"
+                                            <input type="text" id="con_name" placeholder="Your Name"  name="name" class="form-control"
                                                 />
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="form-group">
                                             <label>Your Email <span class="required">*</span></label>
-                                            <input type="email" id="con_email"  name="email" class="form-control"
+                                            <input type="email" id="con_email" placeholder="Your Email"  name="email" class="form-control"
                                                 />
                                         </div>
                                     </div>

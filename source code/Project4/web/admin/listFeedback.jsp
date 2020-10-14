@@ -18,11 +18,11 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th>STT</th>
-                                        <th>Ten</th>
-                                        <th>Đia Chi Thu</th>
-                                        <th>Noi Dung</th>
-                                        <th>Ngay gui</th>
+                                        <th>Số Thứ Tự</th>
+                                        <th>Tên</th>
+                                        <th>Địa Chỉ Thư</th>
+                                        <th>Nội Dung</th>
+                                        <th>Ngày Gửi</th>
 
                                     </tr>
                                 </thead>
@@ -34,11 +34,9 @@
                                             <td>${fb.email}</td>
                                             <td>${fb.content}</td>                                           
                                             <td><fmt:formatDate value="${fb.createdAt}" pattern="yyyy-MM-dd"/></td>
-                                                     
-                                            <td><button type="button" class="btn btn-warning btn-circle"><i
-                                                        class="fa fa-times"><a href="mailto:">phản hồi</a></i></button></td>
-                                            <td><button type="button" class="btn btn-warning btn-circle"><i
-                                                        class="fa fa-wrench"></i></button></td>
+
+                                            <td><button type="button"><i><a href="mailto:">phản hồi</a></i></button></td>
+                                            <td><button type="button" class="btn btn-warning btn-circle"><i class="fa fa-wrench"></i></button></td>
                                         </tr>
                                     </c:forEach>
 

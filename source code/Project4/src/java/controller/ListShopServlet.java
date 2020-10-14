@@ -64,7 +64,9 @@ public class ListShopServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("utf-8");
+        
          EntityManagerFactory factory = Persistence.createEntityManagerFactory("Project4PU");
         EntityManager em = factory.createEntityManager();
         //snag day dau tien ong kiem tra xemrequesr.getParam("id") co ton tai khong. neus co thi ong lay id no ra. roi dung update de thau doi status thanh 0./ Nesu khong thi ong thuc hien cai o duoi nay nhu binh thuong.

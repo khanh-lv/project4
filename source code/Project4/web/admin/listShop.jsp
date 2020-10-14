@@ -1,6 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
 <jsp:include page="admin_header.jsp" />
 
 
@@ -10,7 +11,7 @@
             <div class="col-lg-12">
                 <div class="panel panel-default">
                     <div class="panel-heading" style="margin-top: 30px;">
-                        Danh Sách Phản Hồi
+                        Danh Sách 
                     </div>
                     <!-- /.panel-heading -->
                     <div class="panel-body">
@@ -36,8 +37,7 @@
                                             <td>${book.publishingCompany}</td>
                                             <td>${book.price}</td>
                                             <td><img src="${book.thumbnail}" style="height: 100px; width: 100px"/></td>
-                                            <!--nut xoa nhé ong!-->
-<!--                                            doan nay ong nghi cach truyen cai id cua sach vao cai id do.-->
+
                                             <td><a href="listShop?id=" class="btn btn-warning btn-circle"><i
                                                         class="fa fa-times"></i></a></td>
                                             <td><button type="button" class="btn btn-warning btn-circle"><i
