@@ -4,9 +4,6 @@
     Author     : PC
 --%>
 
-<%
-    System.out.println("status: " + session.getAttribute("status"));
-%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -98,8 +95,7 @@
                                             
                                         }
                                     
-                                    %>
-                                    
+                                    %>    
                                     <div class="cart-block">
                                         <div class="cart-total">
                                             <span class="text-number">
@@ -196,22 +192,36 @@
                                     <a href="/Project4/shop">Shop</a>                               
                                 </li>
                                 <li><a href="/Project4/contact">Contact</a></li>
-                                <li><a href="/Project4/myaccount">MyAccount</a></li>
+                                <%    
+                                        if(session.getAttribute("status") != null){
+                                            int status = (Integer) session.getAttribute("status");
+                                            if(status == 1){          
+                                                out.print("<li><a href='/Project4/myaccount'>MyAccount</a></li>"); 
+                                            }
+                                        }
+                                    %>                             
                             </ul>
                         </nav>
                         <!-- mobile menu navigation end -->
                     </div>
                     <!-- mobile menu end -->
                     <nav class="off-canvas-nav">
-                        <ul class="mobile-menu menu-block-2">                         
-                            <li class="menu-item-has-children">
-                                <a href="#">My Account <i class="fas fa-angle-down"></i></a>
-                                <ul class="sub-menu">
-                                    <li><a href="#">My Account</a></li>
-                                    <li><a href="#">Order History</a></li>
-                                    <li><a href="#">Transactions</a></li>
-                                </ul>
-                            </li>
+                        <ul class="mobile-menu menu-block-2">  
+                            <%    
+                                        if(session.getAttribute("status") != null){
+                                            int status = (Integer) session.getAttribute("status");
+                                            if(status == 1){          
+                                                out.print("<li class='menu-item-has-children'>"); 
+                                                out.print("<a href='#'>My Account <i class='fas fa-angle-down'></i></a>"); 
+                                                out.print("<ul class='sub-menu'>"); 
+                                                out.print("<li><a href='#'>My Account</a></li>"); 
+                                                out.print("<li><a href='#'>Order History</a></li>"); 
+                                                out.print(" <li><a href='#'>Transactions</a></li>"); 
+                                                out.print("</ul>"); 
+                                                out.print("</li>"); 
+                                            }
+                                        }
+                                    %>                           
                         </ul>
                     </nav>
                     <div class="off-canvas-bottom">
@@ -253,9 +263,16 @@
                                 <li class="menu-item">
                                     <a href="/Project4/contact">Contact</a>
                                 </li>
-                                <li class="menu-item has-children">
-                                        <a href="/Project4/myaccount">My Account </a>
-                                </li>
+                                <%    
+                                        if(session.getAttribute("status") != null){
+                                            int status = (Integer) session.getAttribute("status");
+                                            if(status == 1){
+                                                out.print("<li class='menu-item has-children'>");
+                                                out.print("<a href='/Project4/myaccount'>My Account</a></li>"); 
+                                                out.print("</li>");
+                                            }
+                                        }
+                                    %>              
                             </ul>
                         </div>
                     </div>
