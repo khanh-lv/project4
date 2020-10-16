@@ -155,6 +155,19 @@
                                 </ul>
                                 <!-- /.nav-second-level -->
                             </li>
+                            <li>
+                                <a href="#"><i class="fa fa-wrench fa-fw"></i>User<span class="fa arrow"></span></a>
+                                <ul class="nav nav-second-level">
+                                    <li>
+                                        <a href="/Project4/listuser">Danh Sách</a>
+                                    </li>
+<!--                                    <li>
+                                        <a href="/Project4/addadmin">Them Admin</a>
+                                    </li>-->
+
+                                </ul>
+                                <!-- /.nav-second-level -->
+                            </li>    
 
                         </ul>
                     </div>
