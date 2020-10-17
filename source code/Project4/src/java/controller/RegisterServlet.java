@@ -9,8 +9,13 @@ import entity.Roles;
 import entity.Users;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.regex.Pattern;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -81,7 +86,13 @@ public class RegisterServlet extends HttpServlet {
                 Users users = new Users();
                 users.setFullname(fullname);
                 users.setEmail(email);
-                users.setPassword(password);
+               
+                try {
+                    users.setPassword(convertHashToString(password));
+                } catch (NoSuchAlgorithmException ex) {
+                    Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
+                }
+               
                 users.setAddress(address);
                 users.setPhone(phone);
                 users.setStatus(1);
@@ -162,5 +173,15 @@ public class RegisterServlet extends HttpServlet {
             return false;
         }
         return true;
+    }
+    
+    private String convertHashToString(String text) throws NoSuchAlgorithmException {      
+        MessageDigest md = MessageDigest.getInstance("MD5");
+        byte[] hashInBytes = md.digest(text.getBytes(StandardCharsets.UTF_8));
+        StringBuilder stringpass = new StringBuilder();
+        for (byte b : hashInBytes) {
+            stringpass.append(String.format("%02x", b));
+        }
+        return stringpass.toString();
     }
 }

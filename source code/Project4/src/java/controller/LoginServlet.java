@@ -8,7 +8,12 @@ package controller;
 import entity.Users;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -62,23 +67,16 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-//        String email = request.getParameter("email");
-//        String password = request.getParameter("password");
+
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("Project4PU");
         EntityManager em = emf.createEntityManager();
-//        if(email != "" && password != "") {
 
-//            List<Users> userList = query.getResultList();
-//            
-//            RequestDispatcher rd = request.getRequestDispatcher("layout/index.jsp");
-//            rd.forward(request, response);
-//        }
-        String email = request.getParameter("email");
-        String password = request.getParameter("password");
-
-
-        Query q = em.createQuery("select u from Users u where u.email = '" + email + "' and u.password = '" + password + "'");
-        List<Object> userList = q.getResultList();
+       
+        try {
+            String email = request.getParameter("email");
+            String password = convertHashToString(request.getParameter("password"));
+            Query q = em.createQuery("select u from Users u where u.email = '" + email + "' and u.password = '" + password + "'");
+            List<Object> userList = q.getResultList();
         
         if (userList.size() > 0) {
             HttpSession session = request.getSession(false);
@@ -97,6 +95,13 @@ public class LoginServlet extends HttpServlet {
             RequestDispatcher rd = getServletContext().getRequestDispatcher("/layout/login.jsp");
             rd.include(request, response);
         }
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+
+        
+        
     }
 
     /**
@@ -108,5 +113,15 @@ public class LoginServlet extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+    
+    private String convertHashToString(String text) throws NoSuchAlgorithmException {      
+        MessageDigest md = MessageDigest.getInstance("MD5");
+        byte[] hashInBytes = md.digest(text.getBytes(StandardCharsets.UTF_8));
+        StringBuilder stringpass = new StringBuilder();
+        for (byte b : hashInBytes) {
+            stringpass.append(String.format("%02x", b));
+        }
+        return stringpass.toString();
+    }
 
 }
