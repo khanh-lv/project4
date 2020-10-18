@@ -1,6 +1,7 @@
 <%@page import="entity.Users"%>
 <jsp:include page="header.jsp" />
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<% Users user = (Users) session.getAttribute("user"); %>
 <section class="breadcrumb-section">
 	<h2 class="sr-only">Site Breadcrumb</h2>
 	<div class="container">
@@ -24,6 +25,7 @@
 						<div class="myaccount-tab-menu nav" role="tablist">
 							<a href="#dashboad" class="active" data-toggle="tab"><i class="fas fa-tachometer-alt"></i>Dashboard</a>
 							<a href="#orders" data-toggle="tab"><i class="fa fa-cart-arrow-down"></i> Orders</a>
+                                                        <a href="#address-edit" data-toggle="tab"><i class="fa fa-map-marker"></i> address</a>
 							<a href="#account-info" data-toggle="tab"><i class="fa fa-user"></i> Account Details</a>
 							<a href = "logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
 						</div>
@@ -37,8 +39,8 @@
 								<div class="myaccount-content">
 									<h3>Dashboard</h3>
 									<div class="welcome mb-20">
-										<p>Hello, <strong>Alex Tuntuni</strong> (If Not <strong>Tuntuni
-												!</strong><a href="login-register.html" class="logout">
+										<p>Hello, <strong><%=user.getFullname()%></strong> (If Not <strong><%=user.getFullname()%>
+												</strong>, please <a href="logout">
 												Logout</a>)</p>
 									</div>
 									<p class="mb-0">From your account dashboard. you can easily check &amp; view
@@ -100,10 +102,9 @@
 								<div class="myaccount-content">
 									<h3>Billing Address</h3>
 									<address>
-										<p><strong>Alex Tuntuni</strong></p>
-										<p>1355 Market St, Suite 900 <br>
-											San Francisco, A 94103</p>
-										<p>Mobile: (123) 456-7890</p>
+										<p>Fullname: <strong><%=user.getFullname()%></strong></p>
+										<p>Address: <%=user.getAddress() %></p>
+										<p>Phone Number: <%=user.getPhone() %></p>
 									</address>
 									<a href="#" class="btn btn--primary"><i class="fa fa-edit"></i>Edit
 										Address</a>
@@ -119,11 +120,13 @@
 											<div class="row">
 												
 												<div class="col-12  mb--30">
-													<input id="display-name" placeholder="Fullname" type="text">
+													<input id="display-name" placeholder="Fullname" type="text"
+                                                                                                               value="<%=user.getFullname()%>">
                                                                                                        
 												</div>
 												<div class="col-12  mb--30">
-													<input id="email" placeholder="Email Address" type="email">
+													<input id="email" placeholder="Email Address" type="email"
+                                                                                                               value="<%=user.getEmail()%>">
 												</div>
 												<div class="col-12  mb--30">
 													<h4>Password change</h4>

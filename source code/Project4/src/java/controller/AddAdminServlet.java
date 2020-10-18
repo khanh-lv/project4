@@ -12,7 +12,6 @@ import java.io.PrintWriter;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -29,9 +28,9 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author black
+ * @author MTD
  */
-public class RegisterServlet extends HttpServlet {
+public class AddAdminServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -42,8 +41,7 @@ public class RegisterServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-   
-
+    
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -56,7 +54,7 @@ public class RegisterServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        RequestDispatcher rd = request.getRequestDispatcher("layout/register.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("admin/addAdmin.jsp");
         rd.forward(request, response);
     }
 
@@ -71,7 +69,6 @@ public class RegisterServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
         String fullname = request.getParameter("fullname");
         String email = request.getParameter("email");
         String password = request.getParameter("password");
@@ -96,7 +93,7 @@ public class RegisterServlet extends HttpServlet {
                 users.setAddress(address);
                 users.setPhone(phone);
                 users.setStatus(1);
-                Query query = em.createQuery("select r from Roles r where r.role = 'customer'");
+                Query query = em.createQuery("select r from Roles r where r.role = 'admin'");
                 List<Roles> roleList = query.getResultList();
                 Roles role = roleList.get(0);
                 users.setRoleId(role);
@@ -107,17 +104,18 @@ public class RegisterServlet extends HttpServlet {
                 em.persist(users);
                 em.getTransaction().commit();
 
-                RequestDispatcher rd = request.getRequestDispatcher("layout/index.jsp");
+                RequestDispatcher rd = request.getRequestDispatcher("admin/dashboard.jsp");
                 rd.forward(request, response);
             } else {
                 
                 request.setAttribute("message1", "Fail!");
 
                 request.setAttribute("message", "Email has been registered, please check again!");
-                RequestDispatcher rd = request.getRequestDispatcher("layout/register.jsp");
+                RequestDispatcher rd = request.getRequestDispatcher("addmin/addadmin.jsp");
                 rd.forward(request, response);
             }    
         }
+        
     }
 
     /**
@@ -129,7 +127,8 @@ public class RegisterServlet extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-    public boolean validate(String fullname, String email, String password, String address, String phone, String repassword) { 
+
+        public boolean validate(String fullname, String email, String password, String address, String phone, String repassword) { 
         if (!Pattern.matches("[a-zA-Z ]{1,50}", fullname)) {  
             return false;
         }  
