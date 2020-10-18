@@ -92,7 +92,18 @@ public class ListShopServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
       
+        int id = Integer.parseInt(request.getParameter("id"));
         
+        EntityManagerFactory factory = Persistence.createEntityManagerFactory("Project4PU");
+        EntityManager em = factory.createEntityManager();
+        
+        Books books = em.find(Books.class, id);
+        
+        em.getTransaction().begin();
+        em.remove(books);
+        em.getTransaction().commit();
+        
+        response.sendRedirect("listShop");
         
         
     }

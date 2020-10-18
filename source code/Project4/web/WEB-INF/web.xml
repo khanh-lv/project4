@@ -59,10 +59,18 @@
     <servlet>
         <servlet-name>AddShopServlet</servlet-name>
         <servlet-class>controller.AddShopServlet</servlet-class>
-    </servlet>    
-    <servlet>    
+    </servlet>
+    <servlet>
         <servlet-name>LogoutServlet</servlet-name>
         <servlet-class>controller.LogoutServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddCateServlet</servlet-name>
+        <servlet-class>controller.AddCateServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CateServlet</servlet-name>
+        <servlet-class>controller.CateServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Index</servlet-name>
@@ -130,6 +138,14 @@
     <servlet-mapping>
         <servlet-name>LogoutServlet</servlet-name>
         <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddCateServlet</servlet-name>
+        <url-pattern>/themtheloai</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CateServlet</servlet-name>
+        <url-pattern>/theloai</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

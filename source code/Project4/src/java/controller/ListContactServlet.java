@@ -39,15 +39,7 @@ public class ListContactServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ListContactServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ListContactServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+           
         }
     }
 
@@ -87,18 +79,7 @@ public class ListContactServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        int id = Integer.parseInt(request.getParameter("id"));
-        
-        EntityManagerFactory factory = Persistence.createEntityManagerFactory("Project4PU");
-        EntityManager em = factory.createEntityManager();
-        
-        Feedback fb = em.find(Feedback.class, id);
-        
-        em.getTransaction().begin();
-        em.remove(fb);
-        em.getTransaction().commit();
-        
-        response.sendRedirect("list");
+       
     }
 
     /**

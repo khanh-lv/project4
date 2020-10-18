@@ -19,7 +19,7 @@
                                 <form role="form" action="/Project4/addshop" method="post" enctype="multipart/form-data" >
                                     <div class="form-group">
                                         <label>Tên Sách</label>
-                                        <input class="form-control" name="title" placeholder="Enter text"/>
+                                        <input class="form-control" value="${books.title}" name="title" placeholder="Enter text"/>
                                     </div>
 <!--                                    <div class="form-group">    
                                         <label>Chọn Thể Loại</label>
@@ -33,35 +33,35 @@
                                     </div>-->
                                     <div class="form-group">
                                         <label>Tác Giả</label>
-                                        <input class="form-control" name="author" placeholder="Enter text"/>
+                                        <input class="form-control" value="${books.author}" name="author" placeholder="Enter text"/>
                                     </div>
                                     <div class="form-group">
                                         <label>Nhà Xuất Bản</label>
-                                        <input class="form-control" name="publishingCompany" placeholder="Enter text"/>
+                                        <input class="form-control" value="${books.publishingCompany}" name="publishingCompany" placeholder="Enter text"/>
                                     </div>
                                     <div class="form-group">
                                         <label>Năm Xuất Bản</label>
-                                        <input class="form-control" name="publishingYear" placeholder="Enter text"/>
+                                        <input class="form-control" value="${books.publishingYear}" name="publishingYear" placeholder="Enter text"/>
                                     </div>
                                     <div class="form-group">
                                         <label>Số Lượng</label>
-                                        <input class="form-control" name="quantityInStock" placeholder="Enter text"/>
+                                        <input class="form-control" value="${books.quantityInStock}" name="quantityInStock" placeholder="Enter text"/>
                                     </div>
                                     <div class="form-group">
                                         <label>Giá</label>
-                                        <input class="form-control" name="price" placeholder="Enter text"/>
+                                        <input class="form-control" value="${books.price}" name="price" placeholder="Enter text"/>
                                     </div>                                           
                                     <div class="form-group">
                                         <label>Thông Tin Sách</label>
-                                        <input class="form-control" name="shortDes" placeholder="Enter text"/>
+                                        <input class="form-control" value="${books.shortDes}" name="shortDes" placeholder="Enter text"/>
                                     </div>
                                     <div class="form-group">
                                         <label>Chọn Ảnh</label>
-                                        <input type="file" name="file"/>
+                                        <input type="file" value="${books.thumbnail}" name="file"/>
                                     </div>
                                     <div class="form-group">
                                         <label>Giới Thiệu Sách</label>
-                                        <textarea class="form-control" name="description" rows="3"></textarea>
+                                        <textarea class="form-control" value="${books.description}" name="description" rows="3"></textarea>
                                     </div>
                                     <tr>
                                         <td>

@@ -36,7 +36,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Feedback.findByContent", query = "SELECT f FROM Feedback f WHERE f.content = :content")
     , @NamedQuery(name = "Feedback.findByCreatedAt", query = "SELECT f FROM Feedback f WHERE f.createdAt = :createdAt")
     , @NamedQuery(name = "Feedback.findByUpdatedAt", query = "SELECT f FROM Feedback f WHERE f.updatedAt = :updatedAt")
-    , @NamedQuery(name = "Feedback.findByStatus", query = "SELECT f FROM Feedback f WHERE f.status = :status")})
+    })
 public class Feedback implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -61,8 +61,7 @@ public class Feedback implements Serializable {
     @Column(name = "updated_at")
     @Temporal(TemporalType.DATE)
     private Date updatedAt;
-    @Column(name = "status")
-    private Integer status;
+
 
     public Feedback() {
     }
@@ -119,13 +118,7 @@ public class Feedback implements Serializable {
         this.updatedAt = updatedAt;
     }
 
-    public Integer getStatus() {
-        return status;
-    }
-
-    public void setStatus(Integer status) {
-        this.status = status;
-    }
+ 
 
     @Override
     public int hashCode() {

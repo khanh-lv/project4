@@ -5,7 +5,7 @@
  */
 package controller;
 
-import static com.sun.xml.internal.ws.spi.db.BindingContextFactory.LOGGER;
+import static com.sun.xml.ws.spi.db.BindingContextFactory.LOGGER;
 import entity.Books;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -66,6 +66,16 @@ public class AddShopServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        Books books = new Books(0);
+
+        if (request.getParameter("id") != null) {
+            EntityManagerFactory factory = Persistence.createEntityManagerFactory("Project4PU");
+            EntityManager em = factory.createEntityManager();
+            int id = Integer.parseInt(request.getParameter("id"));
+            books = em.find(Books.class, id);
+        }
+
+        request.setAttribute("books", books);
 
         RequestDispatcher rd = request.getRequestDispatcher("admin/addShop.jsp");
         rd.forward(request, response);
@@ -84,7 +94,6 @@ public class AddShopServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("utf-8");
-        
 
         String title = request.getParameter("title");
         String file = request.getParameter("thumbnail");
@@ -96,60 +105,77 @@ public class AddShopServlet extends HttpServlet {
         String description = request.getParameter("description");
         int publishingYear = Integer.parseInt(request.getParameter("publishingYear"));
 //        int status = Integer.parseInt(request.getParameter("status"));
-//        int id = Integer.parseInt(request.getParameter("id"));
+        int id = 0;//Integer.parseInt(request.getParameter("id"));
         Date date = new Date();
-        
-        final String path = "C:\\Users\\PC\\Desktop\\project4\\project4\\source code\\Project4\\web\\layout\\image\\products";
-    final Part filePart = request.getPart("file");
-    final String fileName = getFileName(filePart);
+
+        final String path = "layout\\image\\products";
+        final Part filePart = request.getPart("file");
+        final String fileName = getFileName(filePart);
 
         OutputStream out = null;
         InputStream filecontent = null;
-    final PrintWriter writer = response.getWriter();
+        final PrintWriter writer = response.getWriter();
 
-    try {
-        out = new FileOutputStream(new File(path + File.separator
-                + fileName));
-        filecontent = filePart.getInputStream();
+        try {
+            out = new FileOutputStream(new File(path + File.separator
+                    + fileName));
+            filecontent = filePart.getInputStream();
 
-        int read = 0;
-        final byte[] bytes = new byte[1024];
-        
-        
+            int read = 0;
+            final byte[] bytes = new byte[1024];
 
-        while ((read = filecontent.read(bytes)) != -1) {
-            out.write(bytes, 0, read);
+            while ((read = filecontent.read(bytes)) != -1) {
+                out.write(bytes, 0, read);
+            }
+            writer.println("New file " + fileName + " created at " + path);
+            writer.println("<center><a href='listShop?id=\" + id + \"'>Danh Sách</a></center>");
+            LOGGER.log(Level.INFO, "File{0}being uploaded to {1}",
+                    new Object[]{fileName, path});
+        } catch (FileNotFoundException fne) {
+
+            writer.println("<br/> ERROR: " + fne.getMessage());
+
         }
-        writer.println("New file " + fileName + " created at " + path);
-        writer.println("<center><a href='listShop?id=\" + id + \"'>Danh Sách</a></center>");
-        LOGGER.log(Level.INFO, "File{0}being uploaded to {1}",
-                new Object[]{fileName, path});
-    } catch (FileNotFoundException fne) {
-
-        writer.println("<br/> ERROR: " + fne.getMessage());
-
-    } 
 
         //save into sdb
         EntityManagerFactory factory = Persistence.createEntityManagerFactory("Project4PU");
         EntityManager em = factory.createEntityManager();
 
-        Books books = new Books();
-        books.setTitle(title);
-        books.setThumbnail(file);
-        books.setAuthor(author);
-        books.setPublishingCompany(publishingCompany);
-        books.setPublishingYear(publishingYear);
-        books.setQuantityInStock(quantityInStock);
-        books.setPrice(price);
-        books.setShortDes(shortDes);
-        books.setDescription(description);
-        books.setCreatedAt(date);
+        if (id == 0) {
+            Books books = new Books();
+            books.setTitle(title);
+            books.setThumbnail("layout/image/products/" + fileName);
+            books.setAuthor(author);
+            books.setPublishingCompany(publishingCompany);
+            books.setPublishingYear(publishingYear);
+            books.setQuantityInStock(quantityInStock);
+            books.setPrice(price);
+            books.setShortDes(shortDes);
+            books.setDescription(description);
+            books.setCreatedAt(date);
+            books.setId(id);
 
-        em.getTransaction().begin();
-        em.persist(books);
+            em.getTransaction().begin();
+            em.persist(books);
 
-        em.getTransaction().commit();
+            em.getTransaction().commit();
+
+        } else {
+            Books editbooks = em.find(Books.class, id);
+            em.getTransaction().begin();
+            editbooks.setTitle(title);
+            editbooks.setThumbnail("layout/image/products/" + fileName);
+            editbooks.setAuthor(author);
+            editbooks.setPublishingCompany(publishingCompany);
+            editbooks.setPublishingYear(publishingYear);
+            editbooks.setQuantityInStock(quantityInStock);
+            editbooks.setPrice(price);
+            editbooks.setShortDes(shortDes);
+            editbooks.setDescription(description);
+            editbooks.setCreatedAt(date);
+            em.getTransaction().commit();
+        }
+        response.sendRedirect("addshop");
 
     }
 
@@ -166,4 +192,3 @@ public class AddShopServlet extends HttpServlet {
 
     }
 }
-    

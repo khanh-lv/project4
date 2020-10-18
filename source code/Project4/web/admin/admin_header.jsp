@@ -126,14 +126,31 @@
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
                         <li>
                             <a href="#"><i class="fa fa-wrench fa-fw"></i>Thể Loại<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="/Project4/listShop">Danh Sách</a>
+                                    <a href="/Project4/theloai">Danh Sách</a>
                                 </li>
                                 <li>
-                                    <a href="/Project4/addShop">Thêm Mới</a>
+                                    <a href="/Project4/themtheloai">Thêm Mới</a>
                                 </li>
 
                             </ul>

@@ -25,23 +25,30 @@
                                         <th>Nhà Xuất Bản</th>
                                         <th>Giá</th>
                                         <th>Hình Ảnh</th>
-                                
+
                                     </tr>
                                 </thead>
                                 <tbody>
-                                       <c:forEach var="book" items="${bookList}" varStatus="loop">
+                                    <c:forEach var="books" items="${bookList}" varStatus="loop">
                                         <tr>
                                             <td>${loop.index + 1}</td>
-                                            <td>${book.title}</td>
-                                            <td>${book.author}</td>
-                                            <td>${book.publishingCompany}</td>
-                                            <td>${book.price}</td>
-                                            <td><img src="${book.thumbnail}" style="height: 100px; width: 100px"/></td>
+                                            <td>${books.title}</td>
+                                            <td>${books.author}</td>
+                                            <td>${books.publishingCompany}</td>
+                                            <td>${books.price}</td>
+                                            <td><img src="${books.thumbnail}" style="height: 100px; width: 100px"/></td>
 
-                                            <td><a href="listShop?id=" class="btn btn-warning btn-circle"><i
-                                                        class="fa fa-times"></i></a></td>
-                                            <td><button type="button" class="btn btn-warning btn-circle"><i
-                                                        class="fa fa-wrench"></i></button></td>
+                                            <td>
+                                                <form method="post">
+                                                <a href="listShop?actiondelete%id=<c:out value="${books.id}"/>" >
+                                                    <button class="btn btn-warning btn-circle"><i
+                                                            class="fa fa-times"></i></button>
+                                                </a>
+                                                    </form>
+                                            </td>
+
+                                            <td><a href="addshop?id=${book.id}"><button type="button" class="btn btn-warning btn-circle"><i
+                                                            class="fa fa-wrench"></i></button></a></td>
                                         </tr>
 
                                     </c:forEach>

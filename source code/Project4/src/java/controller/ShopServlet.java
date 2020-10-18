@@ -20,6 +20,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -79,10 +80,8 @@ public class ShopServlet extends HttpServlet {
         }
         if (request.getParameter("search") == null && request.getParameter("catid") != null) {
 
-                
-                int catId = Integer.parseInt(request.getParameter("catid"));
-                query = entity.createQuery("select b from Books b, Categories c where b.catId = c and c.id = " + catId);
-            
+            int catId = Integer.parseInt(request.getParameter("catid"));
+            query = entity.createQuery("select b from Books b, Categories c where b.catId = c and c.id = " + catId);
 
         }
         if (request.getParameter("search") != null && request.getParameter("catid") != null) {
@@ -99,24 +98,30 @@ public class ShopServlet extends HttpServlet {
         if (request.getParameter("page") == null) {
             page = 1;
         } else {
-            try{
+            try {
                 page = Integer.parseInt(request.getParameter("page"));
-            } catch(Exception e){
+            } catch (Exception e) {
                 page = 1;
             }
-            
+
         }
-        int count = (int)query.getResultList().size()/12 + 1;
+        int count = (int) query.getResultList().size() / 12 + 1;
         System.out.println(count);
-        bookList = query.setFirstResult((page -1)*12).setMaxResults(12).getResultList();
-        
+        bookList = query.setFirstResult((page - 1) * 12).setMaxResults(12).getResultList();
+
         Query query2 = entity.createQuery("select c from Categories c");
         List<Object> categories = query2.getResultList();
         entity.close();
         factory.close();
-        request.setAttribute("categories", categories);
-        request.setAttribute("bookList", bookList);
-        request.setAttribute("count", count);
+
+        
+        
+        HttpSession session = request.getSession(false);
+        session.setAttribute("categories", categories);
+        session.setAttribute("bookList", bookList);
+        session.setAttribute("count", count);
+
+
         RequestDispatcher rd = request.getRequestDispatcher("layout/shop.jsp");
         rd.forward(request, response);
     }
@@ -133,8 +138,7 @@ public class ShopServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-        
-        
+
     }
 
     /**

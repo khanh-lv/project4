@@ -10,7 +10,7 @@
             <div class="col-lg-12">
                 <div class="panel panel-default">
                     <div class="panel-heading" style="margin-top: 30px;">
-                        Danh Sach
+                        Danh Sách
                     </div>
                     <!-- /.panel-heading -->
                     <div class="panel-body">
@@ -19,27 +19,25 @@
                                 <thead>
                                     <tr>
                                         <th>Số Thứ Tự</th>
-                                        <th>Tên</th>
-                                        <th>Địa Chỉ Thư</th>
-                                        <th>Nội Dung</th>
-                                        <th>Ngày Gửi</th>
+                                        <th>Tên Thể Loại</th>
+                                        <th>Ngày Tạo</th>
 
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <c:forEach var="fb" items="${fbList}" varStatus="loop">
+                                    <c:forEach var="cate" items="${cateList}" varStatus="loop"> 
                                         <tr>
                                             <td>${loop.index + 1}</td>
-                                            <td>${fb.fullname}</td>
-                                            <td>${fb.email}</td>
-                                            <td>${fb.content}</td>                                           
-                                            <td><fmt:formatDate value="${fb.createdAt}" type = "both" dateStyle = "short" timeStyle = "short"/></td>
+                                            <td>${cate.catName}</td>
+                                            <td><fmt:formatDate value="${cate.createdAt}" pattern="yyyy-MM-dd"/></td>
 
-                                            <td><button type="button"><i><a href="mailto:">phản hồi</a></i></button></td>
-                                            <td><button type="button" class="btn btn-warning btn-circle"><i class="fa fa-wrench"></i></button></td>
+                                            <td><a class="btn btn-warning btn-circle"><i
+                                                        class="fa fa-times"></i></a></td>
+                                            <td><button type="button" class="btn btn-warning btn-circle"><i
+                                                        class="fa fa-wrench"></i></button></td>
                                         </tr>
-                                    </c:forEach>
 
+                                    </c:forEach>
                                 </tbody>
                             </table>
                         </div>
