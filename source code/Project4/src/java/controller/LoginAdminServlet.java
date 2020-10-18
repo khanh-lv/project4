@@ -7,7 +7,12 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -66,11 +71,14 @@ public class LoginAdminServlet extends HttpServlet {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("Project4PU");
         EntityManager em = emf.createEntityManager();
         
-        String email = request.getParameter("email");
-        String password = request.getParameter("password");
         
-        Query q = em.createQuery("select u from Users u, Roles r where u.email = '"+ email +"' and u.password = '"+password+"' and u.roleId = r and r.role = 'admin'");
-        List<Object> userList = q.getResultList();
+       
+        try {
+            String email = request.getParameter("email");
+            String password = convertHashToString(request.getParameter("password"));
+            Query q = em.createQuery("select u from Users u, Roles r where u.email = '"+ email +"' and u.password = '"+password+"' and u.roleId = r and r.role = 'admin'");
+            
+            List<Object> userList = q.getResultList();
         
         if (userList.size() > 0) {
             HttpSession session = request.getSession(false);
@@ -89,6 +97,12 @@ public class LoginAdminServlet extends HttpServlet {
             RequestDispatcher rd = getServletContext().getRequestDispatcher("/admin/loginadmin.jsp");
             rd.include(request, response);
         }
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(LoginAdminServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+        
     }
 
     /**
@@ -100,5 +114,14 @@ public class LoginAdminServlet extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
+    
+     private String convertHashToString(String text) throws NoSuchAlgorithmException {      
+        MessageDigest md = MessageDigest.getInstance("MD5");
+        byte[] hashInBytes = md.digest(text.getBytes(StandardCharsets.UTF_8));
+        StringBuilder stringpass = new StringBuilder();
+        for (byte b : hashInBytes) {
+            stringpass.append(String.format("%02x", b));
+        }
+        return stringpass.toString();
+    }
 }

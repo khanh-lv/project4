@@ -9,6 +9,7 @@ import entity.Users;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -70,7 +71,18 @@ public class ListUserServlet extends HttpServlet {
         EntityManager em = emf.createEntityManager();
         
 //        Query q = em.createNamedQuery("select fullname, email, address, phone from users");
+//        HttpServletRequest request1 = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getContext();
+//        int page = 1;
+//        int pageNum = 6;
+//        try {
+//            page = Integer.parseInt(request1.getParameter("page"));
+//        } catch(Exception e) {
+//        
+//        }
+//        int index = (page - 1)*pageNum;
         Query q = em.createNamedQuery("Users.findAll", Users.class);
+//        q.setFirstResult(index);
+//        q.setMaxResults(pageNum);
         List<Users> usList = q.getResultList();
         em.close();
         emf.close();

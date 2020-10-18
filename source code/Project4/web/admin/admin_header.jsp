@@ -161,9 +161,9 @@
                                     <li>
                                         <a href="/Project4/listuser">Danh Sách</a>
                                     </li>
-<!--                                    <li>
+                                    <li>
                                         <a href="/Project4/addadmin">Them Admin</a>
-                                    </li>-->
+                                    </li>
 
                                 </ul>
                                 <!-- /.nav-second-level -->
