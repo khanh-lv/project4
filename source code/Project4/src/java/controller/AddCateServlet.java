@@ -71,6 +71,9 @@ public class AddCateServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
+        response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("utf-8");
+        
         String catName = request.getParameter("catName");
         Date date = new Date();
         
@@ -80,10 +83,12 @@ public class AddCateServlet extends HttpServlet {
         Categories cate = new Categories();
         cate.setCatName(catName);
         cate.setCreatedAt(date);
-        
+        cate.setStatus(1);
         em.getTransaction().begin();
         em.persist(cate);
         em.getTransaction().commit();
+        em.close();
+        factory.close();
     }
 
     /**

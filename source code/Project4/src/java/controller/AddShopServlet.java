@@ -15,10 +15,12 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.util.Date;
+import java.util.List;
 import java.util.logging.Level;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -63,20 +65,24 @@ public class AddShopServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    private int id = 0;
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         Books books = new Books(0);
-
+        EntityManagerFactory factory = Persistence.createEntityManagerFactory("Project4PU");
+        EntityManager em = factory.createEntityManager();
         if (request.getParameter("id") != null) {
-            EntityManagerFactory factory = Persistence.createEntityManagerFactory("Project4PU");
-            EntityManager em = factory.createEntityManager();
-            int id = Integer.parseInt(request.getParameter("id"));
+            
+            id = Integer.parseInt(request.getParameter("id"));
             books = em.find(Books.class, id);
         }
-
+        Query query = em.createQuery("select c from Categories c");
+        List<Object> categories = query.getResultList();
+        em.close();
+        factory.close();
         request.setAttribute("books", books);
-
+        request.setAttribute("categories", categories);
         RequestDispatcher rd = request.getRequestDispatcher("admin/addShop.jsp");
         rd.forward(request, response);
     }
@@ -105,7 +111,7 @@ public class AddShopServlet extends HttpServlet {
         String description = request.getParameter("description");
         int publishingYear = Integer.parseInt(request.getParameter("publishingYear"));
 //        int status = Integer.parseInt(request.getParameter("status"));
-        int id = 0;//Integer.parseInt(request.getParameter("id"));
+        //Integer.parseInt(request.getParameter("id"));
         Date date = new Date();
 
         final String path = "layout\\image\\products";
@@ -144,6 +150,7 @@ public class AddShopServlet extends HttpServlet {
         if (id == 0) {
             Books books = new Books();
             books.setTitle(title);
+            books.setStatus(1);
             books.setThumbnail("layout/image/products/" + fileName);
             books.setAuthor(author);
             books.setPublishingCompany(publishingCompany);
@@ -161,9 +168,11 @@ public class AddShopServlet extends HttpServlet {
             em.getTransaction().commit();
 
         } else {
+            System.out.println(request.getParameter("id: " + id));
             Books editbooks = em.find(Books.class, id);
             em.getTransaction().begin();
             editbooks.setTitle(title);
+            editbooks.setStatus(1);
             editbooks.setThumbnail("layout/image/products/" + fileName);
             editbooks.setAuthor(author);
             editbooks.setPublishingCompany(publishingCompany);

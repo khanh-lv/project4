@@ -5,6 +5,7 @@
 --%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
+</div>
     <!-- jQuery -->
     <script src="admin/js/jquery.min.js"></script>
 
@@ -13,6 +14,10 @@
 
     <!-- Metis Menu Plugin JavaScript -->
     <script src="admin/js/metisMenu.min.js"></script>
+    
+     <!-- DataTables JavaScript -->
+    <script src="admin/js/dataTables/jquery.dataTables.min.js"></script>
+    <script src="admin/js/dataTables/dataTables.bootstrap.min.js"></script>
 
     <!-- Morris Charts JavaScript
     <script src="admin/js/raphael.min.js"></script>
@@ -21,6 +26,13 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="admin/js/startmin.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#dataTables-example').DataTable({
+                responsive: true
+            });
+        });
+    </script>
 
 </body>
 

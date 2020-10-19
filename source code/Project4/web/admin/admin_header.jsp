@@ -19,6 +19,12 @@
         <meta name="author" content="">
 
         <title>DashBoard</title>
+        
+        <!-- DataTables CSS -->
+    <link href="admin/css/dataTables/dataTables.bootstrap.css" rel="stylesheet">
+
+    <!-- DataTables Responsive CSS -->
+    <link href="admin/css/dataTables/dataTables.responsive.css" rel="stylesheet">
 
         <!-- Bootstrap Core CSS -->
         <link href="admin/css/bootstrap.min.css" rel="stylesheet">
