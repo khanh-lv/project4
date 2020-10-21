@@ -71,7 +71,7 @@
     <servlet>
         <servlet-name>CateServlet</servlet-name>
         <servlet-class>controller.CateServlet</servlet-class>
-        </servlet>
+    </servlet>
     <servlet>
         <servlet-name>LogoutAdminServlet</servlet-name>
         <servlet-class>controller.LogoutAdminServlet</servlet-class>
@@ -83,6 +83,10 @@
     <servlet>
         <servlet-name>AddAdminServlet</servlet-name>
         <servlet-class>controller.AddAdminServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ChangePassServlet</servlet-name>
+        <servlet-class>controller.ChangePassServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Index</servlet-name>
@@ -159,7 +163,7 @@
         <servlet-name>CateServlet</servlet-name>
         <url-pattern>/theloai</url-pattern>
     </servlet-mapping>
-    <servlet-mapping>    
+    <servlet-mapping>
         <servlet-name>LogoutAdminServlet</servlet-name>
         <url-pattern>/logoutadmin</url-pattern>
     </servlet-mapping>
@@ -170,6 +174,10 @@
     <servlet-mapping>
         <servlet-name>AddAdminServlet</servlet-name>
         <url-pattern>/addadmin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ChangePassServlet</servlet-name>
+        <url-pattern>/changepass</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

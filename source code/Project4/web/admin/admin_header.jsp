@@ -104,23 +104,7 @@
                     }
                 %>
 
-                <ul class="nav navbar-right navbar-top-links">
-
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                            <i class="fa fa-user fa-fw"></i> secondtruth <b class="caret"></b>
-                        </a>
-                        <ul class="dropdown-menu dropdown-user">
-                            <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
-                            </li>
-                            <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
-                            </li>
-                            <li class="divider"></li>
-                            <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
+               
                 <!-- /.navbar-top-links -->
 
                 <div class="navbar-default sidebar" role="navigation">
@@ -142,52 +126,82 @@
                             </li>
                             <li>
                                 <a href="#"><i class="fa fa-wrench fa-fw"></i>Phản Hồi<span class="fa arrow"></span></a>
-                                <ul class="nav nav-second-level">
-                                    <li>
-                                        <a href="/Project4/listFeedback">Danh Sách</a>
-                                    </li>                               
-
-                                </ul>
+                                
+                                    <% 
+                                        if (session.getAttribute("status") != null) {
+                                        int status = (Integer) session.getAttribute("status");
+                                            if (status == 1) {
+                                                out.print("<ul class='nav nav-second-level'>");
+                                                out.print("<li>");
+                                                out.print("<a href='/Project4/listFeedback'>Danh Sách</a>");
+                                                out.print("</li>");
+                                                out.print("</ul>");
+                                            }
+                                        }
+                                    
+                                    %>
+                               
                                 <!-- /.nav-second-level -->
                             </li>
                             <li>
                                 <a href="#"><i class="fa fa-wrench fa-fw"></i>Cửa Hàng <span class="fa arrow"></span></a>
-                                <ul class="nav nav-second-level">
-                                    <li>
-                                        <a href="/Project4/listShop">Danh Sách</a>
-                                    </li>
-                                    <li>
-                                        <a href="/Project4/addshop">Thêm Mới</a>
-                                    </li>
-
-                                </ul>
+                                <% 
+                                        if (session.getAttribute("status") != null) {
+                                        int status = (Integer) session.getAttribute("status");
+                                            if (status == 1) {
+                                                out.print("<ul class='nav nav-second-level'>");
+                                                out.print("<li>");
+                                                out.print("<a href='/Project4/listShop'>Danh Sách</a>");
+                                                out.print("</li>");
+                                                out.print("<li>");
+                                                out.print("<a href='/Project4/addshop'>Thêm Mới</a>");
+                                                out.print("</li>");
+                                                out.print("</ul>");
+                                            }
+                                        }
+                                    
+                                    %>            
                                 <!-- /.nav-second-level -->
                             </li>
 
                             <li>
                                 <a href="#"><i class="fa fa-wrench fa-fw"></i>Thể Loại<span class="fa arrow"></span></a>
-                                <ul class="nav nav-second-level">
-                                    <li>
-                                        <a href="/Project4/theloai">Danh Sách</a>
-                                    </li>
-                                    <li>
-                                        <a href="/Project4/themtheloai">Thêm Mới</a>
-                                    </li>
-
-                                </ul>
+                                <% 
+                                        if (session.getAttribute("status") != null) {
+                                        int status = (Integer) session.getAttribute("status");
+                                            if (status == 1) {
+                                                out.print("<ul class='nav nav-second-level'>");
+                                                out.print("<li>");
+                                                out.print("<a href='/Project4/theloai'>Danh Sách</a>");
+                                                out.print("</li>");
+                                                out.print("<li>");
+                                                out.print("<a href='/Project4/themtheloai'>Thêm Mới</a>");
+                                                out.print("</li>");
+                                                out.print("</ul>");
+                                            }
+                                        }
+                                    
+                                    %>                      
                                 <!-- /.nav-second-level -->
                             </li>
                             <li>
                                 <a href="#"><i class="fa fa-wrench fa-fw"></i>User<span class="fa arrow"></span></a>
-                                <ul class="nav nav-second-level">
-                                    <li>
-                                        <a href="/Project4/listuser">Danh Sách</a>
-                                    </li>
-                                    <li>
-                                        <a href="/Project4/addadmin">Them Admin</a>
-                                    </li>
-
-                                </ul>
+                                <% 
+                                        if (session.getAttribute("status") != null) {
+                                        int status = (Integer) session.getAttribute("status");
+                                            if (status == 1) {
+                                                out.print("<ul class='nav nav-second-level'>");
+                                                out.print("<li>");
+                                                out.print("<a href='/Project4/listuser'>Danh Sách</a>");
+                                                out.print("</li>");
+                                                out.print("<li>");
+                                                out.print("<a href='/Project4/addadmin'>Them Admin</a>");
+                                                out.print("</li>");
+                                                out.print("</ul>");
+                                            }
+                                        }
+                                    
+                                    %>            
                                 <!-- /.nav-second-level -->
                             </li>    
 

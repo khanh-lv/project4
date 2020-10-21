@@ -5,18 +5,25 @@
 <jsp:include page="admin_header.jsp" />
 
 
+
+
 <div id="page-wrapper">
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
+                <h1 class="page-header">Danh Sách</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
                 <div class="panel panel-default">
-                    <div class="panel-heading" style="margin-top: 30px;">
-                        Danh Sách 
-                    </div>
-                    <!-- /.panel-heading -->
+                    <div class="panel-heading">
+                                DataTables Advanced Tables
+                            </div>
                     <div class="panel-body">
                         <div class="table-responsive">
-                            <table class="table">
+                            <table class="table table-striped table-bordered table-hover"
+                                        id="dataTables-example">
                                 <thead>
                                     <tr>
                                         <th>STT</th>
@@ -24,44 +31,66 @@
                                         <th>Email</th>
                                         <th>Address</th>
                                         <th>Phone</th>
+                                        <th></th>
+                                       
                                     </tr>
                                 </thead>
                                 <tbody>
-                                       <c:forEach var="user" items="${usList}" varStatus="loop">
-                                        <tr>
+                                    <c:forEach var="users" items="${usList}" varStatus="loop">
+                                        <c:if test="${users.status == 0}">
+
+                                        <tr class="odd gradeX" style="background: #0d6aad ">
                                             <td>${loop.index + 1}</td>
-                                            <td>${user.fullname}</td>
-                                            <td>${user.email}</td>
-                                            <td>${user.address}</td>
-                                            <td>${user.phone}</td>
-                                            <td><a href="listUser?id=" class="btn btn-warning btn-circle"><i
-                                                        class="fa fa-times"></i></a></td>
-                                            <td><button type="button" class="btn btn-warning btn-circle"><i
-                                                        class="fa fa-wrench"></i></button></td>
+                                            <td>${users.fullname}</td>
+                                            <td>${users.email}</td>
+                                            <td>${users.address}</td>
+                                            <td>${users.phone}</td>   
+                                            <td>
+                                                <form method="post">
+                                                    <input type="text" value="${users.id}"   name="id" style="display: none"/>
+                                                    <button class="btn btn-warning btn-circle"><i
+                                                            class="fa fa-times"></i></button>
+                                                </form>
+                                            </td>
+                                            
                                         </tr>
+                                        </c:if>
+                                         <c:if test="${users.status == 1}">
+
+                                        <tr class="odd gradeX">
+                                            <td>${loop.index + 1}</td>
+                                            <td>${users.fullname}</td>
+                                            <td>${users.email}</td>
+                                            <td>${users.address}</td>
+                                            <td>${users.phone}</td>   
+                                            <td>
+                                                <form method="post">
+                                                    <input type="text" value="${users.id}"   name="id" style="display: none"/>
+                                                    <button class="btn btn-warning btn-circle"><i
+                                                            class="fa fa-times"></i></button>
+                                                </form>
+                                            </td>
+                                            
+                                        </tr>
+                                        </c:if>
+                                        
                                     </c:forEach>
                                 </tbody>
                             </table>
-<!--                            <ul class="pagination">
-                                <li><a href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li><a href="#">5</a></li>
-                              </ul>-->
                         </div>
                         <!-- /.table-responsive -->
                     </div>
-                    
                     <!-- /.panel-body -->
                 </div>
                 <!-- /.panel -->
             </div>
+            <!-- /.col-lg-12 -->
         </div>
+        <!-- /.row -->
+
+        <!-- /.row -->
     </div>
+    <!-- /.container-fluid -->
 </div>
-
-</div>
-
 
 <jsp:include page="admin_footer.jsp" />

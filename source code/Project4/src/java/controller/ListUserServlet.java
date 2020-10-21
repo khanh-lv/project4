@@ -5,11 +5,11 @@
  */
 package controller;
 
+
 import entity.Users;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
-
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -70,19 +70,8 @@ public class ListUserServlet extends HttpServlet {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("Project4PU");
         EntityManager em = emf.createEntityManager();
         
-//        Query q = em.createNamedQuery("select fullname, email, address, phone from users");
-//        HttpServletRequest request1 = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getContext();
-//        int page = 1;
-//        int pageNum = 6;
-//        try {
-//            page = Integer.parseInt(request1.getParameter("page"));
-//        } catch(Exception e) {
-//        
-//        }
-//        int index = (page - 1)*pageNum;
         Query q = em.createNamedQuery("Users.findAll", Users.class);
-//        q.setFirstResult(index);
-//        q.setMaxResults(pageNum);
+
         List<Users> usList = q.getResultList();
         em.close();
         emf.close();
@@ -103,7 +92,24 @@ public class ListUserServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        int id = Integer.parseInt(request.getParameter("id"));
         
+        EntityManagerFactory factory = Persistence.createEntityManagerFactory("Project4PU");
+        EntityManager em = factory.createEntityManager();
+        
+        Users users = em.find(Users.class, id);
+        
+        if(users.getStatus() == 0){
+           users.setStatus(1);
+        }else{
+            users.setStatus(0);
+        }
+        
+        em.getTransaction().begin();
+        em.persist(users);
+        em.getTransaction().commit();
+        
+        response.sendRedirect("listuser");
     }
 
     /**

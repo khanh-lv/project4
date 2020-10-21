@@ -1,3 +1,52 @@
+<%
+    if(request.getAttribute("message") != null){
+        out.print("<script>alert('"+ request.getAttribute("message") +"')</script>");
+    }
+%>
+<script>
+    function validate(){
+        var password = document.getElementById("current-pwd")
+        var newpass = document.getElementById("new-pwd");
+        var newrepass = document.getElementById("confirm-pwd");
+        
+        if (password.value == ""){
+        var element = document.getElementById("alertpassword");
+        element.style.display = "";
+        password.style.border = "solid red 1px";
+        
+        return false;
+        }
+        
+        if (newpass.value == ""){
+        var element = document.getElementById("alertnewpass");
+        element.style.display = "";
+        newpass.style.border = "solid red 1px";
+        
+        return false;
+        }
+        
+        
+        if (newrepass.value == ""){
+        var element = document.getElementById("alertrepass");
+        element.style.display = "";
+        newrepass.style.border = "solid red 1px";
+        
+        return false;
+        }
+        
+        if (newpass.value!= newrepass.value) {
+            var element = document.getElementById("alertpass");
+            element.style.display = "";
+            newpass.style.border = "solid red 1px";
+            newrepass.style.border = "solid red 1px";
+            
+            return false;
+        }
+        
+        return true;
+    }
+    
+</script>
 <%@page import="entity.Users"%>
 <jsp:include page="header.jsp" />
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -116,34 +165,40 @@
 								<div class="myaccount-content">
 									<h3>Account Details</h3>
 									<div class="account-details-form">
-										<form action="#">
+										<form action="/Project4/changepass" method="post" onsubmit="return validate()">
 											<div class="row">
 												
 												<div class="col-12  mb--30">
 													<input id="display-name" placeholder="Fullname" type="text"
-                                                                                                               value="<%=user.getFullname()%>">
+                                                                                                               value="<%=user.getFullname()%>" name="fullname">
                                                                                                        
 												</div>
 												<div class="col-12  mb--30">
 													<input id="email" placeholder="Email Address" type="email"
-                                                                                                               value="<%=user.getEmail()%>">
+                                                                                                               value="<%=user.getEmail()%>" name="email">
 												</div>
 												<div class="col-12  mb--30">
 													<h4>Password change</h4>
 												</div>
 												<div class="col-12  mb--30">
 													<input id="current-pwd" placeholder="Current Password"
-														type="password">
+                                                                                                               type="password" name="password" pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,15}" 
+                                                                                                               title="Password contains at least one uppercase English letter, at least one lowercase English letter, at least one digit, contains no special characters and has a length of 8 to 15">
+                                                                                                        <div style="color: red; display: none; padding-left: 20px;" id="alertpassword">This field is required</div>
 												</div>
 												<div class="col-lg-6 col-12  mb--30">
-													<input id="new-pwd" placeholder="New Password" type="password">
+                                                                                                    <input id="new-pwd" placeholder="New Password" type="password" name="newpass" pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,15}" 
+                                                                                                            title="Password contains at least one uppercase English letter, at least one lowercase English letter, at least one digit, contains no special characters and has a length of 8 to 15">
+                                                                                                    <div style="color: red; display: none; padding-left: 20px;" id="alertnewpass">This field is required</div>
 												</div>
 												<div class="col-lg-6 col-12  mb--30">
 													<input id="confirm-pwd" placeholder="Confirm Password"
-														type="password">
+                                                                                                               type="password" name="newrepass">
+                                                                                                        <div style="color: red; display: none; padding-left: 20px;" id="alertrepass">This field is required</div>
+                                                                                                        <div style="color: red; display: none; padding-left: 20px;" id="alertpass"> New password and new repassword is incorret</div>
 												</div>
 												<div class="col-12">
-													<button class="btn btn--primary">Save Changes</button>
+                                                                                                    <button type="submit" class="btn btn--primary">Save Changes</button>
 												</div>
 											</div>
 										</form>
