@@ -18,7 +18,6 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -36,7 +35,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Feedback.findByContent", query = "SELECT f FROM Feedback f WHERE f.content = :content")
     , @NamedQuery(name = "Feedback.findByCreatedAt", query = "SELECT f FROM Feedback f WHERE f.createdAt = :createdAt")
     , @NamedQuery(name = "Feedback.findByUpdatedAt", query = "SELECT f FROM Feedback f WHERE f.updatedAt = :updatedAt")
-    })
+    , @NamedQuery(name = "Feedback.findByStatus", query = "SELECT f FROM Feedback f WHERE f.status = :status")})
 public class Feedback implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -45,14 +44,10 @@ public class Feedback implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
-    @Size(max = 50)
     @Column(name = "fullname")
     private String fullname;
-    // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Invalid email")//if the field contains email address consider using this annotation to enforce field validation
-    @Size(max = 150)
     @Column(name = "email")
     private String email;
-    @Size(max = 255)
     @Column(name = "content")
     private String content;
     @Column(name = "created_at")
@@ -61,7 +56,8 @@ public class Feedback implements Serializable {
     @Column(name = "updated_at")
     @Temporal(TemporalType.DATE)
     private Date updatedAt;
-
+    @Column(name = "status")
+    private Integer status;
 
     public Feedback() {
     }
@@ -118,7 +114,13 @@ public class Feedback implements Serializable {
         this.updatedAt = updatedAt;
     }
 
- 
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
 
     @Override
     public int hashCode() {

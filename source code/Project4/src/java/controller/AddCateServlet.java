@@ -38,7 +38,7 @@ public class AddCateServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-         
+
         }
     }
 
@@ -51,11 +51,24 @@ public class AddCateServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    private int id = 0;
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-          RequestDispatcher rd = request.getRequestDispatcher("admin/addCate.jsp");
+        Categories cate = new Categories(0);
+        EntityManagerFactory factory = Persistence.createEntityManagerFactory("Project4PU");
+        EntityManager em = factory.createEntityManager();
+        if (request.getParameter("id") != null) {
+
+            id = Integer.parseInt(request.getParameter("id"));
+            cate = em.find(Categories.class, id);
+        }
+        em.close();
+        factory.close();
+        request.setAttribute("cate", cate);
+        RequestDispatcher rd = request.getRequestDispatcher("admin/addCate.jsp");
         rd.forward(request, response);
     }
 
@@ -70,25 +83,36 @@ public class AddCateServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("utf-8");
-        
+
         String catName = request.getParameter("catName");
         Date date = new Date();
-        
+//        id = Integer.parseInt(request.getParameter("id"));
+
         EntityManagerFactory factory = Persistence.createEntityManagerFactory("Project4PU");
         EntityManager em = factory.createEntityManager();
-        
-        Categories cate = new Categories();
-        cate.setCatName(catName);
-        cate.setCreatedAt(date);
-        cate.setStatus(1);
-        em.getTransaction().begin();
-        em.persist(cate);
-        em.getTransaction().commit();
-        em.close();
-        factory.close();
+        if (id == 0) {
+            Categories cate = new Categories();
+            cate.setCatName(catName);
+            cate.setCreatedAt(date);
+            cate.setStatus(1);
+            em.getTransaction().begin();
+            em.persist(cate);
+            em.getTransaction().commit();
+
+        } else {
+            Categories editCate = em.find(Categories.class, id);
+            em.getTransaction().begin();
+            editCate.setCatName(catName);
+            editCate.setCreatedAt(date);
+            editCate.setStatus(1);
+
+            em.getTransaction().commit();
+        }
+
+        response.sendRedirect("themtheloai");
     }
 
     /**

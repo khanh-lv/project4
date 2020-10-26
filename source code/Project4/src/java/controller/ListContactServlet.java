@@ -60,7 +60,8 @@ public class ListContactServlet extends HttpServlet {
         
          Query q = em.createNamedQuery("Feedback.findAll", Feedback.class);
         List<Feedback> fbList = q.getResultList();
-        
+         em.close();
+        factory.close();
         request.setAttribute("fbList", fbList);
         
         RequestDispatcher rd = request.getRequestDispatcher("admin/listFeedback.jsp");
@@ -79,7 +80,23 @@ public class ListContactServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       
+       int id = Integer.parseInt(request.getParameter("id"));
+        EntityManagerFactory factory = Persistence.createEntityManagerFactory("Project4PU");
+        EntityManager em = factory.createEntityManager();
+        
+        Feedback fb = em.find(Feedback.class, id);
+        
+        if(fb.getStatus() == 0){
+           fb.setStatus(1);
+        }else{
+            fb.setStatus(0);
+        }
+        
+        em.getTransaction().begin();
+        em.persist(fb);
+        em.getTransaction().commit();
+        
+        response.sendRedirect("listFeedback");
     }
 
     /**

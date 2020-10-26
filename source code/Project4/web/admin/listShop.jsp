@@ -40,7 +40,7 @@
                                     <c:forEach var="books" items="${bookList}" varStatus="loop">
                                         <c:if test="${books.status == 0}">
 
-                                        <tr class="odd gradeX" style="background: #0d6aad ">
+                                        <tr class="odd gradeX" style="background: #c1d2de ">
                                             <td>${loop.index + 1}</td>
                                             <td>${books.title}</td>
                                             <td>${books.author}</td>

@@ -16,13 +16,26 @@
                                 <form  action="/Project4/themtheloai" method="post" >
                                     <div class="form-group">
                                         <label>Tên Thể Loại</label>
-                                        <input class="form-control" name="catName" placeholder="Enter text"/>
+                                        <input class="form-control" value="${cate.catName}" name="catName" placeholder="Enter text"/>
                                     </div>
                                     <tr>
+                                         <%
+                                            if(request.getParameter("id") != null && Integer.parseInt(request.getParameter("id")) > 0) {
+                                        %>
                                         <td>
-                                            <button type="submit" class="btn btn-info btn-circle"><i
+                                            <button type="submit" class="btn btn-info btn-circle" name="action" value="update"><i
+                                                    class="fa fa-check"></i></button>Update
+                                        </td>
+                                        <%
+                                            } else {
+                                        %>
+                                        <td>
+                                            <button type="submit" class="btn btn-info btn-circle" name="action" value="insert"><i
                                                     class="fa fa-check"></i></button>Add
                                         </td>
+                                        <%
+                                            }
+                                        %>
                                         <td>
                                             <button type="reset" class="btn btn-info btn-circle"><i
                                                     class="fa fa-rotate-right"></i></button>reset

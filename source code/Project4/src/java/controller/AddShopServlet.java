@@ -168,7 +168,6 @@ public class AddShopServlet extends HttpServlet {
             em.getTransaction().commit();
 
         } else {
-            System.out.println(request.getParameter("id: " + id));
             Books editbooks = em.find(Books.class, id);
             em.getTransaction().begin();
             editbooks.setTitle(title);
