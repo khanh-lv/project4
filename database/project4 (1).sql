@@ -115,7 +115,8 @@ CREATE TABLE `feedback` (
   `email` varchar(150) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `content` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` date DEFAULT NULL,
-  `updated_at` date DEFAULT NULL
+  `updated_at` date DEFAULT NULL,
+  `status` int(11) DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
